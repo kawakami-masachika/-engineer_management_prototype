@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  mst_skill: one
+  sikll_period: 1
+  level: 1
+
+two:
+  employee: two
+  mst_skill: two
+  sikll_period: 1
+  level: 1

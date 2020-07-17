@@ -1,0 +1,2 @@
+class MstSkill < ApplicationRecord
+end

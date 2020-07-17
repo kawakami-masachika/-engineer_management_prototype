@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: MyString
+  last_name: MyString
+  first_name: MyString
+  kana_first_name: MyString
+  birth_date: MyString
+  join_date: 
+  experience: MyString
+  line: MyString
+  station: MyString
+  mst_employee_type_id: 1
+  data_status: 1
+
+two:
+  employee_id: MyString
+  last_name: MyString
+  first_name: MyString
+  kana_first_name: MyString
+  birth_date: MyString
+  join_date: 
+  experience: MyString
+  line: MyString
+  station: MyString
+  mst_employee_type_id: 1
+  data_status: 1

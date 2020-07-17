@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  skill_type_code: MyString
+  skill: MyString
+  data_status: 1
+
+two:
+  skill_type_code: MyString
+  skill: MyString
+  data_status: 1
