@@ -1,3 +1,3 @@
 class MstGender < ApplicationRecord
-  has_one :employee
+  has_many :employee
 end
