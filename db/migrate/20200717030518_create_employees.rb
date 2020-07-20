@@ -1,17 +1,18 @@
 class CreateEmployees < ActiveRecord::Migration[5.2]
   def change
     create_table :employees do |t|
-      t.string :employee_id
-      t.string :last_name
-      t.string :first_name
-      t.string :kana_first_name
-      t.string :birth_date
-      t.string :join_date
-      t.string :experience
-      t.string :line
-      t.string :station
-      t.integer :mst_employee_type_id
-      t.integer :data_status
+      t.string :employee_id, null: false, unique: true
+      t.string :last_name, null: false
+      t.string :first_name, null: false
+      t.string :kana_last_name, null: false
+      t.string :kana_first_name, null: false
+      t.string :birth_date, null: false, limit: 8
+      t.string :join_date, null: false, limit: 8
+      t.string :experience, null: false
+      t.string :line, null: false
+      t.string :station, null: false
+      t.integer :mst_employee_type_id, null: false, limit: 1
+      t.integer :data_status, null: false, default: 1
       t.string :employee_icon
     end
   end
