@@ -288,3 +288,17 @@ input[type="text"]:focus, input[type="password"]:focus {
 .text-right {
   text-align: right;
 }
+
+.employee-list-table {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.employee-list-table__inner {
+  width: inherit;
+  text-align: center;
+}
+
+.employee-list-table__header-head {
+  background: #e9e9e9;
+}

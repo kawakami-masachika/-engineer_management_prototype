@@ -1,0 +1,337 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@charset "UTF-8";
+
+$breakpoints:(
+  "sm": 'screen and (min-width: 576px)',
+  "md": 'screen and (min-width: 768px)',
+  "lg": 'screen and (min-width: 992px)',
+  "xl": 'screen and (min-width: 1200px)',
+) !default;
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)}{
+    @content;
+  }
+}
+
+// アプリメインカラー
+$main-theme-color: #0091ff;
+$sub-theme-color:  #08FEF8;
+$main-base-theme-color: #fff;
+$sub-base-theme-color: #e9e9e9;
+
+// ボタン
+$btn-base-color: #0773c6;
+$btn-add-color: #2590D0;
+$btn-search-form-color:#808080;
+// 汎用カラー
+$color-danger: #f74955;
+$color-select: #b0ddff;
+
+
+// 文字色
+$main-font-color:  #333;
+$sub-font-color:  #5F5F5F;
+$font-color-white:  #fff;
+
+// 文字サイズ
+$font-size-xs: 0.625rem;
+$font-size-s: 0.75rem;
+$font-size-m: 1rem;
+$font-size-l: 1.5rem;
+$font-size-xl: 2.25rem;
+
+// 文字間
+$font-spacing-s: 1px;
+$font-spacing-m: 1.5px;
+$font-spacing-l: 2px;
+
+// 行間
+$line-height-s: 1.2;
+$line-height-m: 1.5;
+$line-height-l: 2;
+
+// アニメーション 時間
+$trans-sta-time-s: .3s;
+$trans-sta-time-m: .5s;
+$trans-sta-time-l: .7s;
+
+/* ベース */
+html {
+  font-size: 16px;
+}
+
+body{
+  font-family: 'M PLUS 1p', sans-serif !important;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: $main-font-color;
+}
+
+*,*::before,*::after{
+  box-sizing: border-box;
+}
+p{
+  margin: 0;
+}
+a{
+  text-decoration: none;
+  color: $sub-font-color;
+}
+
+li{
+  list-style: none;
+}
+
+img{
+  width: 100%;
+}
+
+.main{
+  padding-top: 60px;
+
+  text-align: center;
+
+  &__inner{
+    width: 1080px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+// element
+// 見出し
+.title{
+  font-size: $font-size-xl;
+  letter-spacing: $font-spacing-l;
+}
+.page-title{
+  font-size: $font-size-l;
+}
+.section-title{
+  font-size: $font-size-m;
+  letter-spacing: $font-spacing-l;
+  font-weight: bold;
+
+  &-new,&-edit{
+    margin-bottom: 20px;
+  }
+}
+// ボタン
+.btn{
+  color: #fff;
+  border-radius: 3px;
+  font-weight: 400;
+  transition: .5s;
+  border: 1px solid transparent;
+  outline: none;
+
+  &:hover{
+    cursor: pointer;
+    color: #fff;
+    opacity: 0.8;
+  }
+  &-wrapper{
+    margin-top: 20px;
+  }
+
+  &-sm{
+    font-size: $font-size-s;
+  }
+  &-md{
+    padding: 10px 20px;
+  }
+
+  &-lg{
+    font-size: $font-size-l;
+    padding:10px 50px;
+  }
+
+  &-wide{
+    padding: 5px 80px;
+  }
+
+  &-info{
+    background: $btn-base-color;
+    &:hover{
+      background: transparent;
+      color: $btn-base-color;
+      border-color: $btn-base-color;
+    }
+  }
+  &-submit{
+    background:$btn-base-color;
+  }
+  &-add{
+    background: $btn-add-color;
+  }
+  &-del{
+    background: $color-danger;
+  }
+  &-edit{
+    background: $btn-base-color;
+  }
+  &-delete{
+    background: $color-danger;
+  }
+  &-search{
+    background: $btn-search-form-color; 
+  }
+  &-reset{
+    background: $btn-search-form-color; 
+  }
+}
+.btn:focus{
+  outline: none;
+}
+// ラジオボタン
+// input[type='radio']{
+  
+// }
+
+// form
+.form{
+  &-area{
+    margin-top: 40px;
+    width: 500px;
+    max-width: 100%;
+    margin: auto;
+    padding: 40px;
+  }
+  
+  &-label{
+    display: block;
+    text-align: left;
+    line-height: $line-height-l;
+    padding-left: 10px;
+  }
+
+  &-select{
+    // padding: 50px;
+  }
+}
+
+input[type="text"],input[type="password"]{
+  display: block;
+  border: none;
+  margin:0 auto;
+  margin-bottom: 20px;
+  letter-spacing: $font-spacing-m;
+}
+
+input[type="text"]:focus,input[type="password"]:focus{
+  outline: none;
+}
+
+// ページネーション
+.pagination{
+  &-area{
+    margin: 60px 0;
+  }
+  display: flex;
+  justify-content: center;
+  &-item{
+    padding: 10px;
+    border-top: 1px solid $sub-base-theme-color;
+    border-left: 1px solid $sub-base-theme-color;
+    border-bottom: 1px solid $sub-base-theme-color;
+    transition: $trans-sta-time-s;
+    &:first-child{
+      border-radius: 3px 0 0 3px;
+    }
+    &:last-child{
+      border-right: 1px solid $sub-base-theme-color;
+      border-radius: 0 3px 3px 0;
+    }
+
+    &:hover{
+      background: #0773c6;
+      &:hover > a {
+        color: $font-color-white;
+      }
+    }
+  }
+}
+.current-page{
+  background: #0773c6;
+  & > a{
+    color: $font-color-white;
+  }
+}
+
+// アイコン
+.icon{
+  width: 80px;
+  height: 80px;
+  border: 1px double #b0b0b0;
+  border-radius: 50%;
+}
+
+// テーブル
+.table{
+  table-layout: fixed;
+  &__head{
+    padding: 15px 0;
+  }
+  &__thead{
+    background: $sub-base-theme-color;
+  }
+  &__row{
+    border-top: 1px solid $sub-base-theme-color;
+    transition: $trans-sta-time-s ease-in;
+    &:hover{
+      background: $color-select;
+    }
+    &-thead{
+      padding: 20px 0;
+    }
+  }
+  &__text{
+    padding: 10px;
+
+    &-radio{
+      position: relative;
+      & > .table__text--inner--label{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        & > input[type="radio"]{
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
+    }
+  }
+}
+
+// モーダル
+.modal{
+}
+
+// モディファイア
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}

@@ -1,0 +1,22 @@
+@import 'application.scss';
+
+.st_02-employee-list{
+}
+
+.ly-st_02-employee-list{
+}
+
+.employee-list-table{
+  width: 100%;
+  margin-top: 60px;
+  &__inner{
+    width: inherit;
+    text-align: center;
+  }
+  &__header-head{
+    background: $sub-base-theme-color;
+  }
+  &__header-row{
+    
+  }
+}
