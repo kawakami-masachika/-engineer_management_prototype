@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_060344) do
+ActiveRecord::Schema.define(version: 2020_07_20_093624) do
 
   create_table "employee_siklls", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "employee_id"
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 2020_07_17_060344) do
     t.integer "mst_employee_type_id", limit: 1, null: false
     t.integer "data_status", default: 1, null: false
     t.string "employee_icon"
+    t.integer "age", null: false
+    t.bigint "mst_gender_id", null: false
+    t.index ["mst_gender_id"], name: "index_employees_on_mst_gender_id"
   end
 
   create_table "introductions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -49,6 +52,11 @@ ActiveRecord::Schema.define(version: 2020_07_17_060344) do
     t.index ["employee_id"], name: "index_licenses_on_employee_id", unique: true
   end
 
+  create_table "mst_genders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "gender", limit: 3, null: false
+    t.integer "data_status", null: false
+  end
+
   create_table "mst_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "skill_type_code"
     t.string "skill"
@@ -59,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_07_17_060344) do
 
   add_foreign_key "employee_siklls", "employees"
   add_foreign_key "employee_siklls", "mst_skills"
+  add_foreign_key "employees", "mst_genders"
   add_foreign_key "introductions", "employees"
   add_foreign_key "licenses", "employees"
 end
