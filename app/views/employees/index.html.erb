@@ -1,0 +1,48 @@
+  <%= content_for :body do %>
+    <%= stylesheet_link_tag 'employees_index' %>
+  <% end %>
+  <div class="main st_02-employee-list ly-st_02-employee-list">
+    <div class="main__inner st_02-employee-list__inner">
+      
+      <h2 class="title page-title">メンバーリスト</h2>
+      <div class="employee-list-table">
+        <table class="table employee-list-table__inner">
+          <thead class="table__thead employee-list-table__header-head">
+            <tr class="table__row-thead employee-list-table__header-row">
+              <th class="table__head">社員番号</th>
+              <th class="table__head">氏名</th>
+              <!-- <th class="table__head">性別</th> -->
+              <th class="table__head">年齢</th>
+              <th class="table__head">入社年月日</th>
+              <th class="table__head">エンジニア歴</th>
+              <th class="table__head"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= @employees.each do |employee| %>
+              <tr class="table__row">
+                <td class="table__text"> employee.employee_id </td>
+                <td class="table__text"> @name </td>
+                <!--<td class="table__text"></td>-->
+                <td class="table__text">employee</td>
+                <td class="table__text">employee.join_date</td>
+                <td class="table__text">employee.experience</td>
+                <td class="table__text table__text-radio"> <%= link_to '詳細情報', employee_path(employee) %> </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination-area">
+        <ul class="pagination">
+          <li class="pagination-item"><a href="" class="">&lt;</a></li>
+          <li class="pagination-item current-page"><a href="" aria-disabled="true">1</a></li>
+          <li class="pagination-item"><a href="">2</a></li>
+          <li class="pagination-item"><a href="">3</a></li>
+          <li class="pagination-item"><a href="">&gt;</a></li>
+        </ul>
+      </div><!-- pagination -->
+
+    </div>
+  </div>
