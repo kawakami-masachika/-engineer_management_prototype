@@ -15,19 +15,18 @@
               <th class="table__head">年齢</th>
               <th class="table__head">入社年月日</th>
               <th class="table__head">エンジニア歴</th>
-              <th class="table__head"></th>
+              <!--<th class="table__head"></th>-->
             </tr>
           </thead>
           <tbody>
-            <%= @employees.each do |employee| %>
+            <% @employees.each do |employee| %>
               <tr class="table__row">
-                <td class="table__text"> employee.employee_id </td>
+                <td class="table__text"> <%= employee.employee_id %></td>
                 <td class="table__text"> @name </td>
                 <!--<td class="table__text"></td>-->
-                <td class="table__text">employee</td>
-                <td class="table__text">employee.join_date</td>
-                <td class="table__text">employee.experience</td>
-                <td class="table__text table__text-radio"> <%= link_to '詳細情報', employee_path(employee) %> </td>
+                <td class="table__text"><%= employee.birth_date %></td>
+                <td class="table__text"><%= employee.join_date %></td>
+                <td class="table__text"><%= employee.experience %></td>
               </tr>
             <% end %>
           </tbody>
