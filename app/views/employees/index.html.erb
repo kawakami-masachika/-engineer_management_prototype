@@ -11,7 +11,7 @@
             <tr class="table__row-thead employee-list-table__header-row">
               <th class="table__head">社員番号</th>
               <th class="table__head">氏名</th>
-              <!-- <th class="table__head">性別</th> -->
+              <th class="table__head">性別</th>
               <th class="table__head">年齢</th>
               <th class="table__head">入社年月日</th>
               <th class="table__head">エンジニア歴</th>
@@ -21,9 +21,9 @@
           <tbody>
             <% @employees.each_with_index do |employee, index| %>
               <tr class="table__row">
-                <td class="table__text"> <%= employee.employee_id %></td>
-                  <td class="table__text"> <%= @names[index] %> </td>
-                <!--<td class="table__text"></td>-->
+                <td class="table__text"><%= employee.employee_id %></td>
+                <td class="table__text"><%= @names[index] %> </td>
+                <td class="table__text"><%= employee.mst_gender.gender %></td>
                 <td class="table__text"><%= employee.birth_date %></td>
                 <td class="table__text"><%= employee.join_date %></td>
                 <td class="table__text"><%= employee.experience %></td>
