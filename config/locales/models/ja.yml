@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      employee: 社員
+    attributes:
+      employee:
+        employee_id: 社員番号
+        last_name: 姓
+        first_name: 名
+        kana_last_name: セイ
+        kana_first_name: メイ
+        birth_date: 生年月日
+        join_date: 入社年月日
+        experience: 経験年数
+        line: 路線
+        station: 最寄り駅
+        mst_employee_type_id: 雇用形態
+        mst_gender_id: 性別
