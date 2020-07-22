@@ -1,6 +1,8 @@
 class EmployeesController < ApplicationController
   def index
-    @employees = Employee.all
+    @q = Employee.ransack(params[:q])
+    @employees = @q.result
+    @q.sorts = 'employee_id asc' if @q.sorts.empty?
     @names = []
     @employees.each do |employee|
       @names << employee.create_full_name(employee.last_name, employee.first_name)
