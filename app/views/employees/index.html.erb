@@ -5,16 +5,22 @@
     <div class="main__inner st_02-employee-list__inner">
       
       <h2 class="title page-title">メンバーリスト</h2>
+      <%= search_form_for @q, url: employees_index_path do |f| %>
+        <%= f.label :employee_id_cont, '社員番号' %>
+        <%= f.search_field :employee_id_eq %>
+        <div class="actions"><%= f.submit "検索" %></div>
+      <% end %>
+
       <div class="employee-list-table">
         <table class="table employee-list-table__inner">
           <thead class="table__thead employee-list-table__header-head">
             <tr class="table__row-thead employee-list-table__header-row">
-              <th class="table__head">社員番号</th>
-              <th class="table__head">氏名</th>
-              <th class="table__head">性別</th>
-              <th class="table__head">年齢</th>
-              <th class="table__head">入社年月日</th>
-              <th class="table__head">エンジニア歴</th>
+              <th class="table__head"><%= sort_link(@q, :employee_id) %>社員番号</th>
+              <th class="table__head"><%= sort_link(@q, :@names) %>氏名</th>
+              <th class="table__head"><%= sort_link(@q, :mst_gender_id) %>性別</th>
+              <th class="table__head"><%= sort_link(@q, :birth_date) %>年齢</th>
+              <th class="table__head"><%= sort_link(@q, :join_date) %>入社年月日</th>
+              <th class="table__head"><%= sort_link(@q, :experience) %>エンジニア歴</th>
               <!--<th class="table__head"></th>-->
             </tr>
           </thead>
