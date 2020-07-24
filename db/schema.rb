@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_20_093624) do
+ActiveRecord::Schema.define(version: 2020_07_23_115648) do
 
   create_table "employee_siklls", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "employee_id"
@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(version: 2020_07_20_093624) do
     t.string "experience", null: false
     t.string "line", null: false
     t.string "station", null: false
-    t.integer "mst_employee_type_id", limit: 1, null: false
     t.integer "data_status", default: 1, null: false
     t.string "employee_icon"
-    t.integer "age", null: false
     t.bigint "mst_gender_id", null: false
+    t.bigint "mst_employee_type_id", null: false
+    t.index ["mst_employee_type_id"], name: "index_employees_on_mst_employee_type_id"
     t.index ["mst_gender_id"], name: "index_employees_on_mst_gender_id"
   end
 
@@ -50,6 +50,11 @@ ActiveRecord::Schema.define(version: 2020_07_20_093624) do
     t.bigint "employee_id"
     t.string "license", null: false
     t.index ["employee_id"], name: "index_licenses_on_employee_id", unique: true
+  end
+
+  create_table "mst_employee_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "employee_type"
+    t.integer "data_status"
   end
 
   create_table "mst_genders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

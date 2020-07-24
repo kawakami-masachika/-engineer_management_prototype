@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get  "employees/index"  => "employees#index"
+  resources :employees
 end

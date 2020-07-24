@@ -1,0 +1,27 @@
+@import 'application.scss';
+
+input[type="text"]{
+  &.input-name{
+    width: 100%;
+  }
+  &.form-input__license{
+      margin-right: 20px;
+      margin-bottom: 0;
+  }
+}
+.form-area__license-inner{
+  margin-bottom: 20px;
+}
+.form{
+  &-area{
+    &__birthday, &__join-date,&__station, &__employee_type, &__license{
+      &-inner__license{
+        margin-bottom: 20px;
+      }
+    }
+    &__new{
+      margin-top: 40px;
+      width: 80%;
+    }
+  }
+}

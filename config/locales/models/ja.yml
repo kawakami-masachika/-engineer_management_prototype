@@ -16,3 +16,5 @@ ja:
         station: 最寄り駅
         mst_employee_type_id: 雇用形態
         mst_gender_id: 性別
+      introduction:
+        introduction: 自己PR
