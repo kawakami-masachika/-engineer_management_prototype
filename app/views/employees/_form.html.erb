@@ -3,6 +3,16 @@
   <%= stylesheet_link_tag 'employees_new' %>
 <% end %>
 
+<% if @employee.errors.any? %> 
+    <div class = "alert alert-warning">
+        <ul>
+            <% @employee.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
   <div class="main">
     <div class="main__inner">
       <h2 class="title page-title">社員登録</h2>
