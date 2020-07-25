@@ -57,14 +57,14 @@
           <div class="form-area__birthday text-left">
             <p class="form-label"><%= f.label :birth_date %></p>
             <div class="form-area__birthday-inner">
-            <%== sprintf(f.date_select(:birth_date , with_css_classes:true , use_month_numbers: true, include_blank: true, start_year: 1950, end_year: Time.now.year, date_separator: '%s'),'<span>年</span>','<span>月</span>')+'<span>日</span>' %>
+            <%== sprintf(f.date_select(:birth_date, prefix:'employee', with_css_classes:true , use_month_numbers: true, include_blank: true, start_year: 1950, end_year: Time.now.year, date_separator: '%s'),'<span>年</span>','<span>月</span>')+'<span>日</span>' %>
             </div>
           </div>
 
           <div class="form-area__join-date text-left">
             <p class="form-label"><label for="">入社年月日</label></p>
             <div class="form-area__join-date-inner">
-              <%== sprintf(f.date_select(:join_date , with_css_classes:true , use_month_numbers: true, include_blank: true, start_year: 1950, end_year: Time.now.year, date_separator: '%s'),'<span>年</span>','<span>月</span>')+'<span>日</span>' %>
+              <%== sprintf(f.date_select(:join_date, prefix:'employee', with_css_classes:true , use_month_numbers: true, include_blank: true, start_year: 1950, end_year: Time.now.year, date_separator: '%s'),'<span>年</span>','<span>月</span>')+'<span>日</span>' %>
             </div>
           </div>
 

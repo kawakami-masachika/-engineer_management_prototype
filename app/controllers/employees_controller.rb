@@ -18,6 +18,11 @@ class EmployeesController < ApplicationController
     @employee.build_introduction
   end
 
+  def create
+    @employee = Employee.new(employees_params)
+    @employee.save 
+  end
+
   def show
   end
 
@@ -26,6 +31,6 @@ class EmployeesController < ApplicationController
   def employees_params
     params.require(:employee).permit(:employee_id, :last_name, :first_name, :kana_last_name, :kana_first_name, 
                                     :birth_date, :join_date, :experience, :line, :station, :mst_employee_type_id,
-                                    :mst_gender_id, [licenses_attributes:[:license]][introduction_attributes:[:introduction]])
+                                    :mst_gender_id, [license_attributes:[:license]],[introduction_attributes:[:introduction]])
   end
 end
