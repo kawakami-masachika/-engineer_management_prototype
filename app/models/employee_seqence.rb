@@ -1,0 +1,2 @@
+class EmployeeSeqence < ApplicationRecord
+end

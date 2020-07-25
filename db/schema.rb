@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_115648) do
+ActiveRecord::Schema.define(version: 2020_07_25_095950) do
+
+  create_table "employee_seqences", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  end
 
   create_table "employee_siklls", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "employee_id"
@@ -27,8 +30,8 @@ ActiveRecord::Schema.define(version: 2020_07_23_115648) do
     t.string "first_name", null: false
     t.string "kana_last_name", null: false
     t.string "kana_first_name", null: false
-    t.string "birth_date", limit: 8, null: false
-    t.string "join_date", limit: 8, null: false
+    t.date "birth_date", null: false
+    t.date "join_date", null: false
     t.string "experience", null: false
     t.string "line", null: false
     t.string "station", null: false
