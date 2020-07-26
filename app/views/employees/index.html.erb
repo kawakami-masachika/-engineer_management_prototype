@@ -32,7 +32,7 @@
                 <td class="table__text"><%= @names[index] %> </td>
                 <td class="table__text"><%= employee.mst_gender.gender %></td>
                 <td class="table__text"><%= employee.birth_date %></td>
-                <td class="table__text"><%= employee.join_date %></td>
+                <td class="table__text"><%= employee.join_date.strftime("%Y#{DATE::YEAR}%m#{DATE::MONTH}%d#{DATE::DAY}") %></td>
                 <td class="table__text"><%= employee.experience %></td>
               </tr>
             <% end %>
