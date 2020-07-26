@@ -48,12 +48,13 @@ class Employee < ApplicationRecord
   end
   
   def to_age(birth_date)
-    return ((Date.today.strftime("%Y%m%d").to_i - birth_date.to_i) / 10000).to_s + AGE
+    return ((Date.today.strftime("%Y%m%d").to_i - birth_date.strftime("%Y%m%d").to_i) / 10000).to_s + AGE
   end
 
-  def to_date(join_date)
-    return join_date.slice(0, 4) + DATE::YEAR + join_date.slice(4, 2) + DATE::MONTH + join_date.slice(6, 7) + DATE::DAY
-  end
+  # def to_sting_date(join_date)
+  #   binding.pry
+  #   return join_date.strftime("%Y#{DATE::YEAR}%m#{DATE::MONTH}%d#{DATE::DAY}")
+  # end
 
   def valid_date(date)
     tmp_date = date["birthday(1i)"] + date["birthday(2i)"] + date["birthday(3i)"]

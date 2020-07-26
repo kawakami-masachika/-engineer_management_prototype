@@ -7,7 +7,7 @@ class EmployeesController < ApplicationController
     @employees.each do |employee|
       @names << employee.create_full_name(employee.last_name, employee.first_name)
       employee.birth_date = employee.to_age(employee.birth_date)
-      employee.join_date = employee.to_date(employee.join_date)
+      # employee.join_date.to_s = employee.to_sting_date(employee.join_date)
     end
   end
 
@@ -20,7 +20,6 @@ class EmployeesController < ApplicationController
   def create
     params[:employee][:birth_date] = join_date
     @employee = Employee.new(employees_params)
-    binding.pry
     if @employee.save 
       redirect_to action: index
     else
