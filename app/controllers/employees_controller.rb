@@ -1,9 +1,9 @@
 class EmployeesController < ApplicationController
   def index
     @q = Employee.ransack(params[:q])
-    @employees = @q.result
+    @employees = @q.result.page(params[:page])
     @q.sorts = 'employee_id asc' if @q.sorts.empty?
-    
+
     @names = []
     @birth_dates = []
 
