@@ -3,11 +3,13 @@ class EmployeesController < ApplicationController
     @q = Employee.ransack(params[:q])
     @employees = @q.result
     @q.sorts = 'employee_id asc' if @q.sorts.empty?
+    
     @names = []
+    @birth_dates = []
+
     @employees.each do |employee|
       @names << employee.create_full_name(employee.last_name, employee.first_name)
-      employee.birth_date = employee.to_age(employee.birth_date)
-      # employee.join_date.to_s = employee.to_sting_date(employee.join_date)
+      @birth_dates << employee.to_age(employee.birth_date)
     end
   end
 
