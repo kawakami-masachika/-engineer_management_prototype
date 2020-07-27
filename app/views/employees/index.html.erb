@@ -41,13 +41,7 @@
       </div>
 
       <div class="pagination-area">
-        <ul class="pagination">
-          <li class="pagination-item"><a href="" class="">&lt;</a></li>
-          <li class="pagination-item current-page"><a href="" aria-disabled="true">1</a></li>
-          <li class="pagination-item"><a href="">2</a></li>
-          <li class="pagination-item"><a href="">3</a></li>
-          <li class="pagination-item"><a href="">&gt;</a></li>
-        </ul>
+        <%= paginate @employees , outer_window: 3 %>
       </div><!-- pagination -->
 
     </div>

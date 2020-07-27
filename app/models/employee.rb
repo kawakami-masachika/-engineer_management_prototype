@@ -23,6 +23,9 @@ class Employee < ApplicationRecord
   validates :mst_employee_type_id, presence: true
   validates :mst_gender_id, presence: true
 
+  #ページネーション デフォルト件数
+  paginates_per 20
+
   attr_accessor :name, :name_kana
 
   # 定数定義
