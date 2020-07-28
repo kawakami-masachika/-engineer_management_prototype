@@ -22,10 +22,13 @@ class EmployeesController < ApplicationController
   def create
     params[:employee][:birth_date] = join_date
     @employee = Employee.new(employees_params)
+    binding.pry
     if @employee.save 
-      redirect_to action: index
+      redirect_to controller: 'employees', action: 'index'
     else
-      render "new"
+      @employee = Employee.new(employees_params)
+      binding.pry
+      render action: 'new'
     end
 
   end
@@ -40,7 +43,7 @@ class EmployeesController < ApplicationController
   def employees_params
     params.require(:employee).permit(:employee_id, :last_name, :first_name, :kana_last_name, :kana_first_name, 
                                     :birth_date, :join_date, :experience, :line, :station, :mst_employee_type_id,
-                                    :mst_gender_id, [license_attributes:[:license]],[introduction_attributes:[:introduction]])
+                                    :mst_gender_id, [licenses_attributes:[:license]],[introduction_attributes:[:introduction]])
   end
 
   def join_date
