@@ -1,15 +1,41 @@
-<%= content_for :body do %>
+<!--<%= content_for :body do %>
   <%= stylesheet_link_tag 'common_form' %>
   <%= stylesheet_link_tag 'employees_new' %>
-<% end %>
+<% end %>-->
 
-<div class="form-area__license">
+<div class="form-area__license nested-fields">
   <p class="form-label"><label for="license">保有資格</label></p>
   <div class="form-area__license-inner">
-    <input class="form-input__license form-input-text--xl" type="text" name="input[0]" id="license">
-    <a class="btn btn-md btn-del js-btn-del-click">削除</a>
+    <%= f.text_field :license, class: 'form-input__license form-input-text--xl', id:'license' %>
+    <!--<input class="form-input__license form-input-text--xl" type="text" name="input[0]" id="license">-->
+    <%= link_to_remove_association "削除", f, class: 'btn btn-md btn-del'%>
+    <!--<a class="btn btn-md btn-del js-btn-del-click">削除</a>-->
   </div>
-</div>
-<div class="text-left">
-  <a id="js-add-input" class="btn btn-add btn-wide">追加</a><!-- license -->
-</div>
+<!--</div>
+  <a id="js-add-input" class="btn btn-add btn-wide">追加</a>
+</div>-->
+<script>
+// 追加
+const MAX_COUNT = 20;
+$('#js-add-input').on('click', function () {
+  const inputCount = $('.form-area__license-inner').length;
+  if (MAX_COUNT > inputCount) {
+    const element = $('.form-area__license-inner:last').clone(true);
+    const inputList = element[0].querySelectorAll('.form-input__license');
+
+    for (var i = 0; i < inputList.length; i++) {
+      inputList[i].value = "";
+    }
+    $('.form-area__license-inner').parent().append(element);
+  }
+});
+
+// 削除
+const MIN_COUNT = 1;
+$('.js-btn-del-click').on('click', function () {
+  const inputCount = $('.form-area__license-inner').length;
+  if (MIN_COUNT < inputCount) {
+    $(this).closest('.form-area__license-inner').remove();
+  }
+});
+</script>

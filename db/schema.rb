@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_095950) do
+ActiveRecord::Schema.define(version: 2020_07_27_163115) do
 
   create_table "employee_seqences", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2020_07_25_095950) do
   create_table "licenses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "employee_id"
     t.string "license", null: false
-    t.index ["employee_id"], name: "index_licenses_on_employee_id", unique: true
   end
 
   create_table "mst_employee_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
