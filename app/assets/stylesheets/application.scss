@@ -193,6 +193,24 @@ img{
   &-reset{
     background: $btn-search-form-color; 
   }
+  &-disable{
+    pointer-events: none;
+    position: relative;
+    border: 1px solid;
+  }
+  &-disable::before{
+    content:"";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    padding: inherit;
+    background-color: rgba(0,0,0,0.2);
+  }
 }
 .btn:focus{
   outline: none;

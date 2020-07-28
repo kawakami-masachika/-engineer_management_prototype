@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_163115) do
+ActiveRecord::Schema.define(version: 2020_07_28_065801) do
 
   create_table "employee_seqences", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_163115) do
     t.string "kana_last_name", null: false
     t.string "kana_first_name", null: false
     t.date "birth_date", null: false
-    t.string "join_date", limit: 8, null: false
+    t.date "join_date", null: false
     t.string "experience", null: false
     t.string "line", null: false
     t.string "station", null: false
