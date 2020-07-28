@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_163115) do
     t.string "kana_last_name", null: false
     t.string "kana_first_name", null: false
     t.date "birth_date", null: false
-    t.date "join_date", null: false
+    t.string "join_date", limit: 8, null: false
     t.string "experience", null: false
     t.string "line", null: false
     t.string "station", null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_163115) do
   create_table "licenses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "employee_id"
     t.string "license", null: false
+    t.index ["employee_id"], name: "index_licenses_on_employee_id"
   end
 
   create_table "mst_employee_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_163115) do
 
   add_foreign_key "employee_siklls", "employees"
   add_foreign_key "employee_siklls", "mst_skills"
+  add_foreign_key "employees", "mst_employee_types"
   add_foreign_key "employees", "mst_genders"
   add_foreign_key "introductions", "employees"
   add_foreign_key "licenses", "employees"
