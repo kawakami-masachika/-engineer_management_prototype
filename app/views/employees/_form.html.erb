@@ -156,13 +156,14 @@
             </div>
           </div><!-- employee_type -->
 
-          <%= f.fields_for :licenses, @employee.licenses.build do |license| %>
+          <div id="licenses">
+          <%= f.fields_for :licenses do |license| %>
             <%= render '/licenses/license_fields', f: license %>
           <% end %>
           <div class="links text-left">
             <%= link_to_add_association '追加',f , :licenses, partial:'/licenses/license_fields', class: 'btn btn-add btn-wide' %>
           </div>
-
+          </div>
           <%= f.fields_for :introduction, @employee.build_introduction do |introduction| %>
             <%= render '/introduction/introduction_fields', f: introduction %>
           <% end %>
