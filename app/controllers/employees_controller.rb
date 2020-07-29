@@ -26,7 +26,6 @@ class EmployeesController < ApplicationController
     if @employee.save 
       redirect_to controller: 'employees', action: 'index'
     else
-      @employee = Employee.new(employees_params)
       binding.pry
       render action: 'new'
     end

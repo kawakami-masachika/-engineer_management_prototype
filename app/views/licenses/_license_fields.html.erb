@@ -1,11 +1,12 @@
-<div class="form-area__license nested-fields">
+<div class="form-area__license nested-fields ">
   <p class="form-label"><label for="license">保有資格</label></p>
-  <div class="form-area__license-inner">
+  <div class="form-area__license-inner field">
     <%= f.text_field :license, class: 'form-input__license form-input-text--xl', id:'license' %>
     <%= link_to_remove_association "削除", f, class: 'btn btn-md btn-del js-btn-del-click'%>
   </div>
-
+</div>
 <script>
+  $('.form-area__license-inner a.btn').first().css('display','none');
   $(function(){
     check_to_disable();
 
@@ -30,6 +31,8 @@
     }
 
     function check_to_disable() {
+      const btn = $('#licenses .nested-fields').first();
+
       if ($('#licenses .nested-fields').length ==  1) {
         $('#licenses a.btn-del').addClass('btn-disable');
         $('#licenses a.btn-del').hide();
@@ -37,9 +40,7 @@
 
       if ($('#licenses .nested-fields').length <=  4) {
         $('#licenses a.btn-add').removeClass('btn-disable');
-      } else{
       }
-
     }
   });
 </script>
