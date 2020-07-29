@@ -13,167 +13,167 @@
     </div>
 <% end %>
 
-  <div class="main">
-    <div class="main__inner">
-      <h2 class="title page-title">社員登録</h2>
+<div class="main">
+  <div class="main__inner">
+    <h2 class="title page-title">社員登録</h2>
 
-      <div class="form-area form-area__new">
-        <h3 class="section-title section-title-edit">社員情報</h3>
-        <%= form_for @employee do |f| %>
-          <div class="form-area__name">
-            <div class="form-area__name-last-name">
-              <p class="form-label"><%= f.label :last_name %></p>
-              <%= f.text_field :last_name, class: 'input-name', placeholder: "山田" %>
-            </div>
-
-            <div class="form-area__name-first-name">
-              <p class="form-label"><%= f.label :first_name %></p>
-              <%= f.text_field :first_name, class: 'input-name', placeholder: "太郎" %>
-            </div>
+    <div class="form-area form-area__new">
+      <h3 class="section-title section-title-edit">社員情報</h3>
+      <%= form_with model: @employee, local: true do |f| %>
+        <div class="form-area__name">
+          <div class="form-area__name-last-name">
+            <p class="form-label"><%= f.label :last_name %></p>
+            <%= f.text_field :last_name, class: 'input-name', placeholder: "山田" %>
           </div>
 
-          <div class="form-area__name-kana">
-            <div class="form-area__name-kana-last-name">
-              <p class="form-label"><%= f.label :kana_last_name %></p>
-              <%= f.text_field :kana_last_name, class: 'input-name', placeholder: "ヤマダ" %>
-            </div>
+          <div class="form-area__name-first-name">
+            <p class="form-label"><%= f.label :first_name %></p>
+            <%= f.text_field :first_name, class: 'input-name', placeholder: "太郎" %>
+          </div>
+        </div>
 
-            <div class="form-area__name-kana-first-name">
-              <p class="form-label"><%= f.label :kana_first_name %></p>
-              <%= f.text_field :kana_first_name, class: 'input-name', placeholder: "ヤマダ" %>
-            </div>
+        <div class="form-area__name-kana">
+          <div class="form-area__name-kana-last-name">
+            <p class="form-label"><%= f.label :kana_last_name %></p>
+            <%= f.text_field :kana_last_name, class: 'input-name', placeholder: "ヤマダ" %>
           </div>
 
-          <div class="form-area__gender text-left">
+          <div class="form-area__name-kana-first-name">
+            <p class="form-label"><%= f.label :kana_first_name %></p>
+            <%= f.text_field :kana_first_name, class: 'input-name', placeholder: "ヤマダ" %>
+          </div>
+        </div>
 
-            <p class="form-label"><label for="">性別</label></p>
+        <div class="form-area__gender text-left">
 
-            <div class="form-area__radio form-area__gender-list">
-              <label class="form-area__gender-item" for="employee_mst_gender_id_1">
-                <span><%= f.radio_button :mst_gender_id, MstGender.find(1).id %></span>男性
-              </label>
+          <p class="form-label"><label for="">性別</label></p>
 
-              <label class="form-area__gender-item" for="employee_mst_gender_id_2">
-                <span><%= f.radio_button :mst_gender_id, MstGender.find(2).id %></span>女性
-              </label>
+          <div class="form-area__radio form-area__gender-list">
+            <label class="form-area__gender-item" for="employee_mst_gender_id_1">
+              <span><%= f.radio_button :mst_gender_id, MstGender.find(1).id %></span>男性
+            </label>
 
-              <label class="form-area__gender-item" for="employee_mst_gender_id_3">
-                <span><%= f.radio_button :mst_gender_id, MstGender.find(3).id %></span>その他
-              </label>
-            </div>
+            <label class="form-area__gender-item" for="employee_mst_gender_id_2">
+              <span><%= f.radio_button :mst_gender_id, MstGender.find(2).id %></span>女性
+            </label>
 
+            <label class="form-area__gender-item" for="employee_mst_gender_id_3">
+              <span><%= f.radio_button :mst_gender_id, MstGender.find(3).id %></span>その他
+            </label>
           </div>
 
-          <div class="form-area__birthday text-left">
-            <p class="form-label"><%= f.label :birth_date %></p>
-            <div class="form-area__birthday-inner">
-            <%== sprintf(f.date_select(:birth_date, prefix:'employee', with_css_classes:true , use_month_numbers: true, include_blank: true, start_year: 1950, end_year: Time.now.year, date_separator: '%s'),'<span>年</span>','<span>月</span>')+'<span>日</span>' %>
-            </div>
-          </div>
+        </div>
 
-          <div class="form-area__join-date text-left">
-            <p class="form-label"><label for="">入社年月日</label></p>
-            <div class="form-area__join-date-inner">
-              <%== sprintf(f.date_select(:join_date, prefix:'employee', with_css_classes:true , use_month_numbers: true, include_blank: true, start_year: 1950, end_year: Time.now.year, date_separator: '%s'),'<span>年</span>','<span>月</span>')+'<span>日</span>' %>
-            </div>
+        <div class="form-area__birthday text-left">
+          <p class="form-label"><%= f.label :birth_date %></p>
+          <div class="form-area__birthday-inner">
+          <%== sprintf(f.date_select(:birth_date, prefix:'employee', with_css_classes:true , use_month_numbers: true, include_blank: true, start_year: 1950, end_year: Time.now.year, date_separator: '%s'),'<span>年</span>','<span>月</span>')+'<span>日</span>' %>
           </div>
+        </div>
 
-          <div class="form-area__join-date text-left">
-            <p class="form-label"><label for="">経験年数</label></p>
-            <div class="form-area__join-date-inner">
-              <select class="form-select form-select-birthday" name="join-date-year" id="">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
+        <div class="form-area__join-date text-left">
+          <p class="form-label"><label for="">入社年月日</label></p>
+          <div class="form-area__join-date-inner">
+            <%== sprintf(f.date_select(:join_date, prefix:'employee', with_css_classes:true , use_month_numbers: true, include_blank: true, start_year: 1950, end_year: Time.now.year, date_separator: '%s'),'<span>年</span>','<span>月</span>')+'<span>日</span>' %>
+          </div>
+        </div>
+
+        <div class="form-area__join-date text-left">
+          <p class="form-label"><label for="">経験年数</label></p>
+          <div class="form-area__join-date-inner">
+            <select class="form-select form-select-birthday" name="join-date-year" id="">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            <span>年</span>
+
+            <select class="form-select form-select-birthday" name="join-date-month" id="">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <span>ヶ月</span>
+          </div>
+        </div>
+
+        <div class="form-area__station">
+
+          <p class="form-label"><label for="">最寄り駅</label></p>
+          <div class="form-area__station-inner">
+
+            <div class="form-area__station-line">
+            <p class="form-label"><%= f.label :line %></p>
+              <%= f.text_field :line, class:'form-text', placeholder:'例) 山手線' %>
+              <span>&nbsp&nbsp</span>
+            </div>
+
+            <div class="form-area__station-nearest">
+            <p class="form-label"><%= f.label :station %></p>
+              <%= f.text_field :station, class:'form-text', placeholder:'例) 池袋駅' %>
+              <span>&nbsp&nbsp</span>
               </select>
-              <span>年</span>
-
-              <select class="form-select form-select-birthday" name="join-date-month" id="">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
-              <span>ヶ月</span>
             </div>
           </div>
+        </div>
 
-          <div class="form-area__station">
+        <div class="form-area__employee_type text-left">
 
-            <p class="form-label"><label for="">最寄り駅</label></p>
-            <div class="form-area__station-inner">
+          <p class="form-label"><label for="employee_type">雇用形態</label></p>
 
-              <div class="form-area__station-line">
-              <p class="form-label"><%= f.label :line %></p>
-                <%= f.text_field :line, class:'form-text', placeholder:'例) 山手線' %>
-                <span>&nbsp&nbsp</span>
-              </div>
+          <div class="form-area__radio form-area__employee-list">
+            <label class="form-area__employee-item form-area__employee-proper" for="employee_mst_employee_type_id_1">
+              <span><%= f.radio_button :mst_employee_type_id, MstEmployeeType.find(1).id %></span>正社員
+            </label>
 
-              <div class="form-area__station-nearest">
-              <p class="form-label"><%= f.label :station %></p>
-                <%= f.text_field :station, class:'form-text', placeholder:'例) 池袋駅' %>
-                <span>&nbsp&nbsp</span>
-                </select>
-              </div>
-            </div>
+            <label class="form-area__employee-item form-area__employee_type-contract" for="employee_mst_employee_type_id_2">
+              <span><%= f.radio_button :mst_employee_type_id, MstEmployeeType.find(2).id %></span>契約社員
+            </label>
+
+            <label class="form-area__employee-item form-area__employee_type-part-time" for="employee_mst_employee_type_id_3">
+              <span><%= f.radio_button :mst_employee_type_id, MstEmployeeType.find(3).id %></span>アルバイト
+            </label>
+
+            <label class="form-area__employee-item form-area__employee_type-part-freelance" for="employee_mst_employee_type_id_4">
+              <span><%= f.radio_button :mst_employee_type_id, MstEmployeeType.find(4).id %></span>フリーランス
+            </label>
           </div>
+        </div><!-- employee_type -->
 
-          <div class="form-area__employee_type text-left">
-
-            <p class="form-label"><label for="employee_type">雇用形態</label></p>
-
-            <div class="form-area__radio form-area__employee-list">
-              <label class="form-area__employee-item form-area__employee-proper" for="employee_mst_employee_type_id_1">
-                <span><%= f.radio_button :mst_employee_type_id, MstEmployeeType.find(1).id %></span>正社員
-              </label>
-
-              <label class="form-area__employee-item form-area__employee_type-contract" for="employee_mst_employee_type_id_2">
-                <span><%= f.radio_button :mst_employee_type_id, MstEmployeeType.find(2).id %></span>契約社員
-              </label>
-
-              <label class="form-area__employee-item form-area__employee_type-part-time" for="employee_mst_employee_type_id_3">
-                <span><%= f.radio_button :mst_employee_type_id, MstEmployeeType.find(3).id %></span>アルバイト
-              </label>
-
-              <label class="form-area__employee-item form-area__employee_type-part-freelance" for="employee_mst_employee_type_id_4">
-                <span><%= f.radio_button :mst_employee_type_id, MstEmployeeType.find(4).id %></span>フリーランス
-              </label>
-            </div>
-          </div><!-- employee_type -->
-
-          <div id="licenses">
-          <%= f.fields_for :licenses do |license| %>
-            <%= render '/licenses/license_fields', f: license %>
-          <% end %>
-          <div class="links text-left">
-            <%= link_to_add_association '追加',f , :licenses, partial:'/licenses/license_fields', class: 'btn btn-add btn-wide' %>
-          </div>
-          </div>
-          <%= f.fields_for :introduction, @employee.build_introduction do |introduction| %>
-            <%= render '/introduction/introduction_fields', f: introduction %>
-          <% end %>
-
-          <div class="btn-wrapper">
-            <%=f.submit class: 'btn btn-wide btn-submit' %>
-          </div>
-
+        <div id="licenses">
+        <%= f.fields_for :licenses do |license| %>
+          <%= render '/licenses/license_fields', f: license %>
         <% end %>
-      </div>
+        <div class="links text-left">
+          <%= link_to_add_association '追加',f , :licenses, partial:'/licenses/license_fields', class: 'btn btn-add btn-wide' %>
+        </div>
+        </div>
+        <%= f.fields_for :introduction, @employee.build_introduction do |introduction| %>
+          <%= render '/introduction/introduction_fields', f: introduction %>
+        <% end %>
+
+        <div class="btn-wrapper">
+          <%=f.submit class: 'btn btn-wide btn-submit' %>
+        </div>
+
+      <% end %>
     </div>
   </div>
+</div>
 

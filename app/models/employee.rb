@@ -1,6 +1,6 @@
 class Employee < ApplicationRecord
   # コールバック
-  before_validation :set_employee_id
+  before_validation :set_employee_id, :trim
 
   #関連付け
   has_one :introduction
@@ -22,6 +22,10 @@ class Employee < ApplicationRecord
   validates :station, presence: true
   validates :mst_employee_type_id, presence: true
   validates :mst_gender_id, presence: true
+  
+  #自作バリデーション
+  validate :license_unique?
+
 
   #ページネーション デフォルト件数
   paginates_per 20
@@ -90,6 +94,26 @@ class Employee < ApplicationRecord
     else
       #例外を考慮する
     end
+  end
+
+  private
+
+  def trim
+    licenses.select{|i| 
+      i[:license].sub!(/\s+/, "")
+      i[:license].sub!(/\s+$/, "")
+    }
+  end
+
+  def license_unique?
+      license = licenses.map{|l| l[:license]}
+      license.delete_if(&:empty?)
+
+      if license.length > 0
+        if license.length != license.uniq.length 
+          errors.add(:licenses, "が重複しています")
+        end
+      end
   end
 
 end
