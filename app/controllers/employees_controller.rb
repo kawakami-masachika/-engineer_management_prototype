@@ -59,7 +59,7 @@ class EmployeesController < ApplicationController
   def employees_params
     params.require(:employee).permit(:employee_id, :last_name, :first_name, :kana_last_name, :kana_first_name, 
                                     :birth_date, :join_date, :experience, :line, :station, :mst_employee_type_id,
-                                    :mst_gender_id, [licenses_attributes:[:license]],[introduction_attributes:[:introduction]])
+                                    :mst_gender_id, [licenses_attributes:[:id,:license]],[introduction_attributes:[:introduction]])
   end
 
   def join_date

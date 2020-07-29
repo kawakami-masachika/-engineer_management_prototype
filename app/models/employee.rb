@@ -106,6 +106,7 @@ class Employee < ApplicationRecord
   end
 
   def license_unique?
+      binding.pry
       license = licenses.map{|l| l[:license]}
       license.delete_if(&:empty?)
 
