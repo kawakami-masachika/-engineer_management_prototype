@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  before_action :set_employee, only:[:edit, :update]
   def index
     @q = Employee.ransack(params[:q])
     @employees = @q.result.page(params[:page])
@@ -29,7 +30,19 @@ class EmployeesController < ApplicationController
       binding.pry
       render action: 'new'
     end
+  end
 
+  def edit
+    
+  end
+
+  def update
+    params[:employee][:birth_date] = join_date
+    if @employee.update(employees_params)
+      redirect_to controller: 'employees', action: 'index'
+    else
+      render action: 'edit'
+    end
   end
 
   def show
@@ -38,6 +51,10 @@ class EmployeesController < ApplicationController
 
 
   private
+
+  def set_employee
+    @employee = Employee.find(params[:id])
+  end
 
   def employees_params
     params.require(:employee).permit(:employee_id, :last_name, :first_name, :kana_last_name, :kana_first_name, 

@@ -3,7 +3,7 @@ class Employee < ApplicationRecord
   before_validation :set_employee_id, :trim
 
   #関連付け
-  has_one :introduction
+  has_one :introduction, dependent: :destroy
   has_many :licenses
   has_many :mst_skills, :through => :employee_siklls
   belongs_to :mst_gender

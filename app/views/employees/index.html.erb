@@ -22,6 +22,7 @@
               <th class="table__head"><%= sort_link(@q, :birth_date) %></th>
               <th class="table__head"><%= sort_link(@q, :join_date) %></th>
               <th class="table__head"><%= sort_link(@q, :experience) %></th>
+              <th class="table__head"></th>
               <!--q<th class="table__head"></th>-->
             </tr>
           </thead>
@@ -34,6 +35,7 @@
                 <td class="table__text"><%= @birth_dates[index] %></td>
                 <td class="table__text"><%= employee.join_date.strftime("%Y#{DATE::YEAR}%m#{DATE::MONTH}%d#{DATE::DAY}") %></td>
                 <td class="table__text"><%= employee.experience %></td>
+                <td class="table__text"><%= link_to '編集', edit_employee_path(employee.id) %></td>
               </tr>
             <% end %>
           </tbody>

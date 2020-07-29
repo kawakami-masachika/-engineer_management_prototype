@@ -164,7 +164,7 @@
           <%= link_to_add_association '追加',f , :licenses, partial:'/licenses/license_fields', class: 'btn btn-add btn-wide' %>
         </div>
         </div>
-        <%= f.fields_for :introduction, @employee.build_introduction do |introduction| %>
+        <%= f.fields_for :introduction do |introduction| %>
           <%= render '/introduction/introduction_fields', f: introduction %>
         <% end %>
 
