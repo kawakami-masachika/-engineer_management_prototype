@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only:[:edit, :update]
+  before_action :set_employee, only:[:edit, :update, :show]
   def index
     @q = Employee.ransack(params[:q])
     @employees = @q.result.page(params[:page])
@@ -46,7 +46,10 @@ class EmployeesController < ApplicationController
   end
 
   def show
-
+    @gender = @employee.mst_gender[:gender]
+    @employee_type = @employee.mst_employee_type[:employee_type]
+    @age = @employee.to_age(@employee.birth_date)
+    
   end
 
 
