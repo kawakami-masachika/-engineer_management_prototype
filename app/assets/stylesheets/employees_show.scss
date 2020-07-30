@@ -1,0 +1,154 @@
+@import 'application.scss';
+.employee-info{
+  &__inner{
+    margin-top: 30px;
+  }
+}
+// 社員プロフィール
+.employee-info__name{
+  font-size: $font-size-l;
+  letter-spacing: $font-spacing-l;
+  &-kana{
+    font-size: $font-size-s;
+  }
+}
+// テーブル
+.employee-info-table{
+  margin-top: 60px;
+  border-collapse: separate;
+  border-spacing:3px 0;
+  &__inner{
+    width: 100%;
+    table-layout: fixed;
+  }
+}
+.employee-info-table__header{
+  text-align: center;
+  border: 2px solid #fff;
+}
+.employee-info-table__text{
+  text-align: center;
+  color: $sub-font-color;
+}
+// tmp
+.employee-info-table__text_left{
+  text-align: left;
+}
+.tab-panel{
+  
+}
+.tab-group{
+  display: flex;
+  margin-bottom:0;
+  margin-top: 20px;
+}
+.tab{
+    margin-right: 5px;
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    padding:5px;
+    border:solid 1px #ccc;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    text-align:center;
+    cursor:pointer;
+    &:last-child{
+      margin-right: 0;
+    }
+}
+.panel-group{
+}
+.panel{
+    display:none;
+    padding-bottom: 20px;
+    
+    &__inner{
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+}
+.tab.is-active{
+    background: $main-theme-color;
+    border: $main-theme-color;
+    color:#FFF;
+    transition: all 0.2s ease-out;
+}
+.panel.is-show{
+    display:block;
+}
+
+.panel-introduce{
+  &__inner{
+    height: 200px;
+    background:#fbfbfb;
+    margin-top: 40px;
+    padding: 5px 20px;
+    text-align: left;
+    letter-spacing:$font-spacing-m
+  }
+}
+
+.project-wrapper{
+  margin-top: 60px;
+  width: 100%;
+}
+
+.project-list{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+
+  &::after{
+    content: "";
+    display: block;
+    width: calc(33% - 10px);
+  }
+
+}
+.project-item{
+  width: calc(33% - 10px);
+  border: 1px solid $sub-base-theme-color;
+  margin-top: 20px;
+  text-align: center;
+  letter-spacing: $font-spacing-m;
+  background: #fbfbfb;
+
+  &__header{
+    font-size: $font-size-l;
+    padding: 20px 0;
+  }
+
+  &__body{
+    border-top: 2px solid $main-theme-color;
+    padding-top: 20px;
+    &-assign{
+        display: flex;
+        justify-content: center;
+        font-size: $font-size-m;
+      &--sta{
+        
+      }
+      &--end{
+
+      }
+    }
+  }
+
+  &__footer{
+    padding: 20px 0;
+  }
+}
+
+.btn-area{
+  &__employee-info{
+    margin-top: 20px;
+  }
+  &__introduce{
+    margin-top: 20px;
+
+  }
+
+}
