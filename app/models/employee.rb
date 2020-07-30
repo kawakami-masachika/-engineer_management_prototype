@@ -2,9 +2,12 @@ class Employee < ApplicationRecord
   # コールバック
   before_validation :set_employee_id, :trim
 
+  # 論理削除
+  acts_as_paranoid
+
   #関連付け
   has_one :introduction, dependent: :destroy
-  has_many :licenses
+  has_many :licenses, dependent: :destroy
   has_many :mst_skills, :through => :employee_siklls
   belongs_to :mst_gender
   belongs_to :mst_employee_type
@@ -22,10 +25,9 @@ class Employee < ApplicationRecord
   validates :station, presence: true
   validates :mst_employee_type_id, presence: true
   validates :mst_gender_id, presence: true
-  
+
   #自作バリデーション
   validate :license_unique?
-
 
   #ページネーション デフォルト件数
   paginates_per 20
