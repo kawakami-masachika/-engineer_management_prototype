@@ -13,347 +13,389 @@
         </div>
       </div>
 
-<div class="tab-panel">
-  <!--タブ-->
-  <ul class="tab-group">
-    <li class="tab tab-A is-active">社員情報</li>
-    <li class="tab tab-B">自己PR</li>
-    <li class="tab tab-C">スキル</li>
-    <li class="tab tab-D">プロジェクト</li>
-  </ul>
+      <div class="tab-panel">
+        <!--タブ-->
+        <ul class="tab-group">
+          <li class="tab tab-A is-active">社員情報</li>
+          <li class="tab tab-B">自己PR</li>
+          <li class="tab tab-C">スキル</li>
+          <li class="tab tab-D">プロジェクト</li>
+        </ul>
 
-  <!--タブを切り替えて表示するコンテンツ-->
-  <div class="panel-group">
-    <div class="panel tab-employee-info is-show">
-      <div class="panel__inner employee-info-table">
-        <table class="table-striped employee-info-table__inner">
-          <tr class="employee-info-table__header-row">
-            <th class="employee-info-table__header">社員番号</th>
-            <th class="employee-info-table__header">性別</th>
-          </tr>
-          <tr class="employee-info-table__header-row">
-            <td class="employee-info-table__text"><%= @employee.employee_id %></td>
-            <td class="employee-info-table__text">男性</td>
-          </tr>
-          <tr class="employee-info-table__header-row">
-            <th class="employee-info-table__header">年齢</th>
-            <th class="employee-info-table__header">最寄り駅</th>
-          </tr>
-          <tr class="employee-info-table__header-row">
-            <td class="employee-info-table__text"><%= @age %></td>
-            <td class="employee-info-table__text"><%= @employee.line + Employee::CONST_HALF_SPACE + @employee.station %></td>
-          </tr>
-          
-          <tr class="employee-info-table__header-row">
-            <th class="employee-info-table__header">性別</th>
-            <th class="employee-info-table__header">入社年月日</th>
-          </tr>
-          <tr class="employee-info-table__header-row">
-            <td class="employee-info-table__text"><%= @employee.mst_gender.gender %></td>
-            <td class="employee-info-table__text"><%= @employee.join_date.strftime("%Y#{DATE::YEAR}%m#{DATE::MONTH}%d#{DATE::DAY}") %></td>
-          </tr>
-          <tr class="employee-info-table__header-row">
-            <th class="employee-info-table__header">雇用形態</th>
-            <th class="employee-info-table__header"></th>
-          </tr>
-          <tr class="employee-info-table__header-row">
-            <td class="employee-info-table__text"><%= @employee.mst_employee_type.employee_type %></td>
-            <td class="employee-info-table__text"></td>
-          </tr>
-        </table>
-      </div>
-      <div class="btn-area btn-area__employee-info">
-        <%= link_to '編集', edit_employee_path(@employee.id), class: "btn btn-edit btn-wide" %>
-        <!--<a class="btn btn-edit btn-wide" href="#">編集</a>-->
-        <a class="btn btn-delete btn-wide" href="#">削除</a>
-      </div>
-    </div><!-- tab-employee-info -->
+        <!--タブを切り替えて表示するコンテンツ-->
+        <div class="panel-group">
+          <div class="panel tab-employee-info is-show">
+            <div class="panel__inner employee-info-table">
+              <table class="table-striped employee-info-table__inner">
+                <tr class="employee-info-table__header-row">
+                  <th class="employee-info-table__header">社員番号</th>
+                  <th class="employee-info-table__header">性別</th>
+                </tr>
+                <tr class="employee-info-table__header-row">
+                  <td class="employee-info-table__text"><%= @employee.employee_id %></td>
+                  <td class="employee-info-table__text">男性</td>
+                </tr>
+                <tr class="employee-info-table__header-row">
+                  <th class="employee-info-table__header">年齢</th>
+                  <th class="employee-info-table__header">最寄り駅</th>
+                </tr>
+                <tr class="employee-info-table__header-row">
+                  <td class="employee-info-table__text"><%= @age %></td>
+                  <td class="employee-info-table__text"><%= @employee.line + Employee::CONST_HALF_SPACE + @employee.station %></td>
+                </tr>
+                
+                <tr class="employee-info-table__header-row">
+                  <th class="employee-info-table__header">性別</th>
+                  <th class="employee-info-table__header">入社年月日</th>
+                </tr>
+                <tr class="employee-info-table__header-row">
+                  <td class="employee-info-table__text"><%= @employee.mst_gender.gender %></td>
+                  <td class="employee-info-table__text"><%= @employee.join_date.strftime("%Y#{DATE::YEAR}%m#{DATE::MONTH}%d#{DATE::DAY}") %></td>
+                </tr>
+                <tr class="employee-info-table__header-row">
+                  <th class="employee-info-table__header">雇用形態</th>
+                  <th class="employee-info-table__header"></th>
+                </tr>
+                <tr class="employee-info-table__header-row">
+                  <td class="employee-info-table__text"><%= @employee.mst_employee_type.employee_type %></td>
+                  <td class="employee-info-table__text"></td>
+                </tr>
+              </table>
+            </div>
+            <div class="btn-area btn-area__employee-info">
+              <%= link_to '編集', edit_employee_path(@employee.id), class: "btn btn-edit btn-wide" %>
+              <!--<a class="btn btn-edit btn-wide" href="#">編集</a>-->
+              <a class="btn btn-delete btn-wide" href="#">削除</a>
+            </div>
+          </div><!-- tab-employee-info -->
 
-    <div class="panel panel-introduce">
-      <div class="panel__inner panel-introduce__inner">
-        自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介
-        自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介
-        自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介
-      </div>
-      <div class="btn-area btn-area__introduce">
-        <a class="btn btn-edit btn-wide" href="#">編集</a>
-      </div>
-    </div>
-
-    <div class="panel panel-skill">
-      <div class="employee-info-table">
-        <table class="table-striped employee-info-table__inner">
-          <thead>
-            <th class="employee-info-table__header">スキル名</th>
-            <th class="employee-info-table__header">経験年数</th>
-            <th class="employee-info-table__header">自己評価</th>
-          </thead>
-          <tbody>
-            <tr class="employee-info-table__header-row">
-              <td id="java" class="employee-info-table__text">Java</td>
-              <td class="employee-info-table__text employee-info-table__text_left">2年<canvas class="canvas"></canvas></td>
-              <td class="employee-info-table__text">8/10</td>
-            </tr>
-            <tr class="employee-info-table__header-row">
-              <td class="employee-info-table__text">SQL</td>
-              <td class="employee-info-table__text employee-info-table__text_left">3年<canvas class="canvas"></canvas></td>
-              <td class="employee-info-table__text">4/10</td>
-            </tr>
-            <tr class="employee-info-table__header-row">
-              <td class="employee-info-table__text">Pl/SQL</td>
-              <td class="employee-info-table__text employee-info-table__text_left">4年<canvas class="canvas"></canvas></td>
-              <td class="employee-info-table__text">5/10</td>
-            </tr>
-            <tr class="employee-info-table__header-row">
-              <td class="employee-info-table__text">Ruby</td>
-              <td class="employee-info-table__text employee-info-table__text_left">4年<canvas class="canvas"></canvas></td>
-              <td class="employee-info-table__text">1/10</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="panel panel-project">
-      <div class="project-wrapper">
-        <div class="project-list">
-
-          <div class="project-item">
-            <div class="project-item__header">
-              プロジェクトA
+          <div class="panel panel-introduce">
+            <div class="panel__inner panel-introduce__inner">
+              <%= @employee.introduction.introduction %>
             </div>
-            <div class="project-item__body">
-              <div class="project-item__body-assign">
-                <div class="project-item__body-assign--sta">
-                  2019年4月1日
-                </div>
-                <div>
-                  〜
-                </div>
-                <div class="project-item__body-assign--end">
-                  2019年10月1日
-                </div>
-              </div>
-              <div class="project-language">
-                <ul>
-                  <li>Java</li>
-                  <li>PostgreSql</li>
-                  <li>SpringMVC</li>
-                </ul>
-              </div>
-            </div>
-            <div class="project-item__footer">
-              <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
-            </div>
-          </div>
-          <div class="project-item">
-            <div class="project-item__header">
-              プロジェクトA
-            </div>
-            <div class="project-item__body">
-              <div class="project-item__body-assign">
-                <div class="project-item__body-assign--sta">
-                  2019年4月1日
-                </div>
-                <div>
-                  〜
-                </div>
-                <div class="project-item__body-assign--end">
-                  2019年10月1日
-                </div>
-              </div>
-              <div class="project-language">
-                <ul>
-                  <li>Java</li>
-                  <li>PostgreSql</li>
-                  <li>SpringMVC</li>
-                </ul>
-              </div>
-            </div>
-            <div class="project-item__footer">
-              <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
-            </div>
-          </div>
-          <div class="project-item">
-            <div class="project-item__header">
-              プロジェクトA
-            </div>
-            <div class="project-item__body">
-              <div class="project-item__body-assign">
-                <div class="project-item__body-assign--sta">
-                  2019年4月1日
-                </div>
-                <div>
-                  〜
-                </div>
-                <div class="project-item__body-assign--end">
-                  2019年10月1日
-                </div>
-              </div>
-              <div class="project-language">
-                <ul>
-                  <li>Java</li>
-                  <li>PostgreSql</li>
-                  <li>SpringMVC</li>
-                </ul>
-              </div>
-            </div>
-            <div class="project-item__footer">
-              <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
-            </div>
-          </div>
-          <div class="project-item">
-            <div class="project-item__header">
-              プロジェクトA
-            </div>
-            <div class="project-item__body">
-              <div class="project-item__body-assign">
-                <div class="project-item__body-assign--sta">
-                  2019年4月1日
-                </div>
-                <div>
-                  〜
-                </div>
-                <div class="project-item__body-assign--end">
-                  2019年10月1日
-                </div>
-              </div>
-              <div class="project-language">
-                <ul>
-                  <li>Java</li>
-                  <li>PostgreSql</li>
-                  <li>SpringMVC</li>
-                </ul>
-              </div>
-            </div>
-            <div class="project-item__footer">
-              <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
-            </div>
-          </div>
-          <div class="project-item">
-            <div class="project-item__header">
-              プロジェクトA
-            </div>
-            <div class="project-item__body">
-              <div class="project-item__body-assign">
-                <div class="project-item__body-assign--sta">
-                  2019年4月1日
-                </div>
-                <div>
-                  〜
-                </div>
-                <div class="project-item__body-assign--end">
-                  2019年10月1日
-                </div>
-              </div>
-              <div class="project-language">
-                <ul>
-                  <li>Java</li>
-                  <li>PostgreSql</li>
-                  <li>SpringMVC</li>
-                </ul>
-              </div>
-            </div>
-            <div class="project-item__footer">
-              <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
-            </div>
-          </div>
-          <div class="project-item">
-            <div class="project-item__header">
-              プロジェクトA
-            </div>
-            <div class="project-item__body">
-              <div class="project-item__body-assign">
-                <div class="project-item__body-assign--sta">
-                  2019年4月1日
-                </div>
-                <div>
-                  〜
-                </div>
-                <div class="project-item__body-assign--end">
-                  2019年10月1日
-                </div>
-              </div>
-              <div class="project-language">
-                <ul>
-                  <li>Java</li>
-                  <li>PostgreSql</li>
-                  <li>SpringMVC</li>
-                </ul>
-              </div>
-            </div>
-            <div class="project-item__footer">
-              <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
-            </div>
-          </div>
-          <div class="project-item">
-            <div class="project-item__header">
-              プロジェクトA
-            </div>
-            <div class="project-item__body">
-              <div class="project-item__body-assign">
-                <div class="project-item__body-assign--sta">
-                  2019年4月1日
-                </div>
-                <div>
-                  〜
-                </div>
-                <div class="project-item__body-assign--end">
-                  2019年10月1日
-                </div>
-              </div>
-              <div class="project-language">
-                <ul>
-                  <li>Java</li>
-                  <li>PostgreSql</li>
-                  <li>SpringMVC</li>
-                </ul>
-              </div>
-            </div>
-            <div class="project-item__footer">
-              <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
+            <div class="btn-area btn-area__introduce">
+              <a class="btn btn-edit btn-wide" href="#">編集</a>
             </div>
           </div>
 
-          <div class="project-item">
-            <div class="project-item__header">
-              プロジェクトA
-            </div>
-            <div class="project-item__body">
-              <div class="project-item__body-assign">
-                <div class="project-item__body-assign--sta">
-                  2019年4月1日
-                </div>
-                <div>
-                  〜
-                </div>
-                <div class="project-item__body-assign--end">
-                  2019年10月1日
-                </div>
-              </div>
-              <div class="project-language">
-                <ul>
-                  <li>Java</li>
-                  <li>PostgreSql</li>
-                  <li>SpringMVC</li>
-                </ul>
-              </div>
-            </div>
-            <div class="project-item__footer">
-              <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
+          <div class="panel panel-skill">
+            <div class="employee-info-table">
+              <table class="table-striped employee-info-table__inner">
+                <thead>
+                  <th class="employee-info-table__header">スキル名</th>
+                  <th class="employee-info-table__header">経験年数</th>
+                  <th class="employee-info-table__header">自己評価</th>
+                </thead>
+                <tbody>
+                  <tr class="employee-info-table__header-row">
+                    <td id="java" class="employee-info-table__text">Java</td>
+                    <td class="employee-info-table__text employee-info-table__text_left">2年<canvas class="canvas"></canvas></td>
+                    <td class="employee-info-table__text">8/10</td>
+                  </tr>
+                  <tr class="employee-info-table__header-row">
+                    <td class="employee-info-table__text">SQL</td>
+                    <td class="employee-info-table__text employee-info-table__text_left">3年<canvas class="canvas"></canvas></td>
+                    <td class="employee-info-table__text">4/10</td>
+                  </tr>
+                  <tr class="employee-info-table__header-row">
+                    <td class="employee-info-table__text">Pl/SQL</td>
+                    <td class="employee-info-table__text employee-info-table__text_left">4年<canvas class="canvas"></canvas></td>
+                    <td class="employee-info-table__text">5/10</td>
+                  </tr>
+                  <tr class="employee-info-table__header-row">
+                    <td class="employee-info-table__text">Ruby</td>
+                    <td class="employee-info-table__text employee-info-table__text_left">4年<canvas class="canvas"></canvas></td>
+                    <td class="employee-info-table__text">1/10</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-          
+          <div class="panel panel-project">
+            <div class="project-wrapper">
+              <div class="project-list">
+
+                <div class="project-item">
+                  <div class="project-item__header">
+                    プロジェクトA
+                  </div>
+                  <div class="project-item__body">
+                    <div class="project-item__body-assign">
+                      <div class="project-item__body-assign--sta">
+                        2019年4月1日
+                      </div>
+                      <div>
+                        〜
+                      </div>
+                      <div class="project-item__body-assign--end">
+                        2019年10月1日
+                      </div>
+                    </div>
+                    <div class="project-language">
+                      <ul>
+                        <li>Java</li>
+                        <li>PostgreSql</li>
+                        <li>SpringMVC</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="project-item__footer">
+                    <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
+                  </div>
+                </div>
+                <div class="project-item">
+                  <div class="project-item__header">
+                    プロジェクトA
+                  </div>
+                  <div class="project-item__body">
+                    <div class="project-item__body-assign">
+                      <div class="project-item__body-assign--sta">
+                        2019年4月1日
+                      </div>
+                      <div>
+                        〜
+                      </div>
+                      <div class="project-item__body-assign--end">
+                        2019年10月1日
+                      </div>
+                    </div>
+                    <div class="project-language">
+                      <ul>
+                        <li>Java</li>
+                        <li>PostgreSql</li>
+                        <li>SpringMVC</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="project-item__footer">
+                    <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
+                  </div>
+                </div>
+                <div class="project-item">
+                  <div class="project-item__header">
+                    プロジェクトA
+                  </div>
+                  <div class="project-item__body">
+                    <div class="project-item__body-assign">
+                      <div class="project-item__body-assign--sta">
+                        2019年4月1日
+                      </div>
+                      <div>
+                        〜
+                      </div>
+                      <div class="project-item__body-assign--end">
+                        2019年10月1日
+                      </div>
+                    </div>
+                    <div class="project-language">
+                      <ul>
+                        <li>Java</li>
+                        <li>PostgreSql</li>
+                        <li>SpringMVC</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="project-item__footer">
+                    <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
+                  </div>
+                </div>
+                <div class="project-item">
+                  <div class="project-item__header">
+                    プロジェクトA
+                  </div>
+                  <div class="project-item__body">
+                    <div class="project-item__body-assign">
+                      <div class="project-item__body-assign--sta">
+                        2019年4月1日
+                      </div>
+                      <div>
+                        〜
+                      </div>
+                      <div class="project-item__body-assign--end">
+                        2019年10月1日
+                      </div>
+                    </div>
+                    <div class="project-language">
+                      <ul>
+                        <li>Java</li>
+                        <li>PostgreSql</li>
+                        <li>SpringMVC</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="project-item__footer">
+                    <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
+                  </div>
+                </div>
+                <div class="project-item">
+                  <div class="project-item__header">
+                    プロジェクトA
+                  </div>
+                  <div class="project-item__body">
+                    <div class="project-item__body-assign">
+                      <div class="project-item__body-assign--sta">
+                        2019年4月1日
+                      </div>
+                      <div>
+                        〜
+                      </div>
+                      <div class="project-item__body-assign--end">
+                        2019年10月1日
+                      </div>
+                    </div>
+                    <div class="project-language">
+                      <ul>
+                        <li>Java</li>
+                        <li>PostgreSql</li>
+                        <li>SpringMVC</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="project-item__footer">
+                    <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
+                  </div>
+                </div>
+                <div class="project-item">
+                  <div class="project-item__header">
+                    プロジェクトA
+                  </div>
+                  <div class="project-item__body">
+                    <div class="project-item__body-assign">
+                      <div class="project-item__body-assign--sta">
+                        2019年4月1日
+                      </div>
+                      <div>
+                        〜
+                      </div>
+                      <div class="project-item__body-assign--end">
+                        2019年10月1日
+                      </div>
+                    </div>
+                    <div class="project-language">
+                      <ul>
+                        <li>Java</li>
+                        <li>PostgreSql</li>
+                        <li>SpringMVC</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="project-item__footer">
+                    <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
+                  </div>
+                </div>
+                <div class="project-item">
+                  <div class="project-item__header">
+                    プロジェクトA
+                  </div>
+                  <div class="project-item__body">
+                    <div class="project-item__body-assign">
+                      <div class="project-item__body-assign--sta">
+                        2019年4月1日
+                      </div>
+                      <div>
+                        〜
+                      </div>
+                      <div class="project-item__body-assign--end">
+                        2019年10月1日
+                      </div>
+                    </div>
+                    <div class="project-language">
+                      <ul>
+                        <li>Java</li>
+                        <li>PostgreSql</li>
+                        <li>SpringMVC</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="project-item__footer">
+                    <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
+                  </div>
+                </div>
+
+                <div class="project-item">
+                  <div class="project-item__header">
+                    プロジェクトA
+                  </div>
+                  <div class="project-item__body">
+                    <div class="project-item__body-assign">
+                      <div class="project-item__body-assign--sta">
+                        2019年4月1日
+                      </div>
+                      <div>
+                        〜
+                      </div>
+                      <div class="project-item__body-assign--end">
+                        2019年10月1日
+                      </div>
+                    </div>
+                    <div class="project-language">
+                      <ul>
+                        <li>Java</li>
+                        <li>PostgreSql</li>
+                        <li>SpringMVC</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="project-item__footer">
+                    <a href="#" class="btn btn-sm btn-info">詳細を見る</a>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
     </div>
 
   </div>
+  <script>
+  // タブとパネルの切り替え
+  document.addEventListener('DOMContentLoaded', function () {
+    // タブに対してクリックイベントを適用
+    const tabs = document.getElementsByClassName('tab');
+    for (let i = 0; i < tabs.length; i++) {
+      tabs[i].addEventListener('click', tabSwitch);
+    }
+
+    // タブをクリックすると実行する関数
+    function tabSwitch() {
+      // タブのclassの値を変更
+      document.getElementsByClassName('is-active')[0].classList.remove('is-active');
+      this.classList.add('is-active');
+      // コンテンツのclassの値を変更
+      document.getElementsByClassName('is-show')[0].classList.remove('is-show');
+      const arrayTabs = Array.prototype.slice.call(tabs);
+      const index = arrayTabs.indexOf(this);
+      document.getElementsByClassName('panel')[index].classList.add('is-show');
+    };
+  });
+
+  // スキルの達成率
+  const canvases = document.getElementsByClassName("canvas");
+
+  const heights = [250, 200, 150];
+  const widths = [100, 150, 200, 100]
+  const WIDTH = 50;
+  const OFFSET = 10;
+
+  for(let i = 0; i < canvases.length; i++){
+    const ctx = canvases[i].getContext("2d");
+    canvases[i].width = widths[i];
+    canvases[i].height = 10;
+    
+    for (let f = 0; f < canvases.length; f++) {
+      const x = f * WIDTH * OFFSET;
+      const y = canvases[i].height - heights[f];
+    
+      ctx.fillRect(10, y, widths[i], heights[f]);
+      ctx.fillStyle = '#08FEF8';
+    }
+  }    
+  </script>
