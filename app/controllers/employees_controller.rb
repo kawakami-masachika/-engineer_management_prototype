@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only:[:edit, :update, :show]
+  before_action :set_employee, only:[:edit, :update, :show, :destroy]
   def index
     @q = Employee.ransack(params[:q])
     @employees = @q.result.page(params[:page])
@@ -50,6 +50,11 @@ class EmployeesController < ApplicationController
     @employee_type = @employee.mst_employee_type[:employee_type]
     @age = @employee.to_age(@employee.birth_date)
     
+  end
+
+  def destroy
+    @employee.destroy
+    redirect_to controller: 'employees', action: 'index'
   end
 
 

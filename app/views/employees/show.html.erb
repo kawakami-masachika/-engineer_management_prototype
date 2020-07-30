@@ -64,8 +64,7 @@
             </div>
             <div class="btn-area btn-area__employee-info">
               <%= link_to '編集', edit_employee_path(@employee.id), class: "btn btn-edit btn-wide" %>
-              <!--<a class="btn btn-edit btn-wide" href="#">編集</a>-->
-              <a class="btn btn-delete btn-wide" href="#">削除</a>
+              <%= link_to '削除', employee_path(@employee.id), method: :delete, class: "btn btn-delete btn-wide" %>
             </div>
           </div><!-- tab-employee-info -->
 

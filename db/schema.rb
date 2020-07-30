@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_065801) do
+ActiveRecord::Schema.define(version: 2020_07_30_025227) do
 
   create_table "employee_seqences", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2020_07_28_065801) do
     t.string "employee_icon"
     t.bigint "mst_gender_id", null: false
     t.bigint "mst_employee_type_id", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_employees_on_deleted_at"
     t.index ["mst_employee_type_id"], name: "index_employees_on_mst_employee_type_id"
     t.index ["mst_gender_id"], name: "index_employees_on_mst_gender_id"
   end
@@ -46,12 +48,16 @@ ActiveRecord::Schema.define(version: 2020_07_28_065801) do
   create_table "introductions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "employee_id"
     t.text "introduction", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_introductions_on_deleted_at"
     t.index ["employee_id"], name: "index_introductions_on_employee_id", unique: true
   end
 
   create_table "licenses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "employee_id"
     t.string "license", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_licenses_on_deleted_at"
     t.index ["employee_id"], name: "index_licenses_on_employee_id"
   end
 
