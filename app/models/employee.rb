@@ -8,7 +8,7 @@ class Employee < ApplicationRecord
   #関連付け
   has_one :introduction, dependent: :destroy
   has_many :licenses, dependent: :destroy
-  has_many :mst_skills, :through => :employee_siklls
+  # has_many :mst_skills, :through => :employee_siklls
   belongs_to :mst_gender
   belongs_to :mst_employee_type
   accepts_nested_attributes_for :licenses, :introduction
