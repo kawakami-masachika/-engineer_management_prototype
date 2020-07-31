@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  resources :employees
+  # get 'employee_skill/new'
+  resources :employees do
+    resources :employee_siklls
+  end
 end

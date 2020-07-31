@@ -1,0 +1,77 @@
+@import 'application.scss';
+
+$form-new-color: #5f5f5f;
+
+input[type="text"]{
+  margin-left: 0;
+  border: 1px solid $sub-base-theme-color;
+  padding: 10px;
+
+  &.input-name{
+    width: 100%;
+  }
+  &.form-input__license{
+      margin-right: 20px;
+      margin-bottom: 0;
+  }
+}
+.form-area__license-inner{
+  margin-bottom: 20px;
+}
+.form{
+  &-area{
+    color: $form-new-color;
+    font-weight: 300;
+
+    &__experience, &__license{
+      margin-top: 20px;
+      &-inner{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      &-inner span{
+        margin-left: 5px;
+        margin-right: 20px;
+      }
+    }
+    &__skill,&__skill-level{
+      display: flex;
+      justify-content: flex-start;
+      &-inner{
+        width: 49%;
+      }
+    }
+    &__skill-level{
+      margin-top: 20px;
+    }
+
+    &__new{
+      margin-top: 40px;
+      border: 1px solid  #dcdcdc;
+      border-radius: 3px;
+      background:#f0f0f0;
+      width: 80%;
+    }
+  }
+
+  &-select{
+    border: 1px solid  #dcdcdc;
+    border-radius: 3px;
+    width: 90px;
+    padding: 10px;
+  }
+
+  &-select1{
+    border: 1px solid  #dcdcdc;
+    border-radius: 3px;
+    width: 90%;
+    padding: 10px;
+  }
+
+  &-select2{
+    border: 1px solid  #dcdcdc;
+    border-radius: 3px;
+    padding: 10px;
+  }
+}

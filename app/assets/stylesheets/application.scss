@@ -215,16 +215,10 @@ img{
 .btn:focus{
   outline: none;
 }
-// ラジオボタン
-// input[type='radio']{
-  
-// }
-
 // form
 .form{
   &-area{
     margin-top: 40px;
-    width: 500px;
     max-width: 100%;
     margin: auto;
     padding: 40px;
@@ -236,10 +230,9 @@ img{
     line-height: $line-height-l;
     padding-left: 10px;
   }
-
   &-select{
-    // padding: 50px;
   }
+
 }
 
 input[type="text"],input[type="password"]{
