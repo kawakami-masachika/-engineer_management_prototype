@@ -8,10 +8,13 @@ class Employee < ApplicationRecord
   #関連付け
   has_one :introduction, dependent: :destroy
   has_many :licenses, dependent: :destroy
-  # has_many :mst_skills, :through => :employee_siklls
+  has_many :employee_siklls
+  has_many :mst_skills, through: :employee_siklls
   belongs_to :mst_gender
   belongs_to :mst_employee_type
-  accepts_nested_attributes_for :licenses, :introduction
+  accepts_nested_attributes_for :licenses, allow_destroy: true
+  accepts_nested_attributes_for :introduction
+  accepts_nested_attributes_for :employee_siklls, allow_destroy: true
   # バリデーション
   validates :employee_id, presence: true
   validates :last_name, presence: true
@@ -60,11 +63,6 @@ class Employee < ApplicationRecord
     return ((Date.today.strftime("%Y%m%d").to_i - birth_date.strftime("%Y%m%d").to_i) / 10000).to_s + AGE
   end
 
-  # def to_sting_date(join_date)
-  #   binding.pry
-  #   return join_date.strftime("%Y#{DATE::YEAR}%m#{DATE::MONTH}%d#{DATE::DAY}")
-  # end
-
   def valid_date(date)
     tmp_date = date["birthday(1i)"] + date["birthday(2i)"] + date["birthday(3i)"]
     y, m ,d = tmp_date.split(CONST_HYPHEN).map(&:to_i)
@@ -108,7 +106,6 @@ class Employee < ApplicationRecord
   end
 
   def license_unique?
-      binding.pry
       license = licenses.map{|l| l[:license]}
       license.delete_if(&:empty?)
 

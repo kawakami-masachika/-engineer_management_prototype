@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only:[:edit, :update, :show, :destroy]
+  # before_action :set_skills, only:[:new]
   def index
     @q = Employee.ransack(params[:q])
     @employees = @q.result.page(params[:page])
@@ -18,26 +19,29 @@ class EmployeesController < ApplicationController
     @employee = Employee.new
     @employee.licenses.build
     @employee.build_introduction
+    @employee.employee_siklls.build
   end
 
   def create
+    binding.pry
     params[:employee][:birth_date] = join_date
     @employee = Employee.new(employees_params)
     binding.pry
     if @employee.save 
       redirect_to controller: 'employees', action: 'index'
     else
-      binding.pry
+      # set_skills
       render action: 'new'
     end
   end
 
   def edit
-    
+    # binding.pry
   end
 
   def update
     params[:employee][:birth_date] = join_date
+    binding.pry
     if @employee.update(employees_params)
       redirect_to controller: 'employees', action: 'index'
     else
@@ -59,6 +63,9 @@ class EmployeesController < ApplicationController
 
 
   private
+  def set_skills
+    @mst_skills = MstSkill.all
+  end
 
   def set_employee
     @employee = Employee.find(params[:id])
@@ -67,14 +74,14 @@ class EmployeesController < ApplicationController
   def employees_params
     params.require(:employee).permit(:employee_id, :last_name, :first_name, :kana_last_name, :kana_first_name, 
                                     :birth_date, :join_date, :experience, :line, :station, :mst_employee_type_id,
-                                    :mst_gender_id, [licenses_attributes:[:id,:license]],[introduction_attributes:[:introduction]])
+                                    :mst_gender_id, [licenses_attributes:[:id, :license, :_destroy]],
+                                    [introduction_attributes:[:id,:introduction]],[employee_siklls_attributes:[:id, :employee_id, :mst_skill_id, :sikll_period, :level]])
   end
 
   def join_date
     birth_date = params[:employee]
     
     unless birth_date["birth_date(1i)"].empty? && birth_date["birth_date(2i)"].empty? && birth_date["birth_date(3i)"].empty?
-      # birth_date = padding_date(birth_date)
     end
 
     return Date.new birth_date["birth_date(1i)"].to_i, birth_date["birth_date(2i)"].to_i, birth_date["birth_date(3i)"].to_i
