@@ -139,7 +139,7 @@
 
           <div class="form-area__radio form-area__employee-list">
             <label class="form-area__employee-item form-area__employee-proper" for="employee_mst_employee_type_id_1">
-              <span><%= f.radio_button :mst_employee_type_id, MstEmployeeType.find(1).id %></span>正社員
+              <span><%= f.radio_button :mst_employee_type_id, MstEmployeeType.find(1).id %></span>
             </label>
 
             <label class="form-area__employee-item form-area__employee_type-contract" for="employee_mst_employee_type_id_2">
@@ -156,6 +156,7 @@
           </div>
         </div><!-- employee_type -->
 
+
         <div id="licenses">
         <%= f.fields_for :licenses do |license| %>
           <%= render '/licenses/license_fields', f: license %>
@@ -167,6 +168,33 @@
         <%= f.fields_for :introduction do |introduction| %>
           <%= render '/introduction/introduction_fields', f: introduction %>
         <% end %>
+
+        <div class="btn-wrapper">
+          <span id="btn-skill-add" class="btn btn-wide btn-submit" >スキル登録・更新</span>
+        </div>
+
+          <div class="modal-bg">
+            <div class="skill-modal">
+              <div class="modal-header text-right"><a class="btn btn-md btn-del js-btn-del">x</a></div>
+              <div class="skill-box-wrapper">
+                <div class="skill-box">
+                  <div class="skill-box-header">
+                    <div class="skill-box-header_top">カテゴリー</div>
+                    <div class="skill-box-header_wh">スキル</div>
+                    <div class="skill-box-header_bk">期間</div>
+                    <div class="skill-box-header_wh">自己評価</div>
+                    <div class="skill-box-header_bk"></div>
+                  </div>
+                  <%= f.fields_for :employee_siklls do |employee_sikll| %>
+                    <%= render '/employee_siklls/employee_sikll_fields', f: employee_sikll %>
+                  <% end %>
+                  <div class="links text-left btn-wrapper">
+                    <%= link_to_add_association '追加',f , :employee_siklls, partial:'/employee_siklls/employee_sikll_fields', class: 'btn btn-add btn-wide' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
         <div class="btn-wrapper">
           <%=f.submit class: 'btn btn-wide btn-submit' %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_31_110053) do
+ActiveRecord::Schema.define(version: 2020_07_31_093607) do
 
   create_table "employee_seqences", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -20,9 +20,8 @@ ActiveRecord::Schema.define(version: 2020_07_31_110053) do
     t.bigint "mst_skill_id"
     t.integer "sikll_period", null: false
     t.integer "level", null: false
-    t.integer "skill_type", limit: 1
-    t.index ["employee_id"], name: "index_employee_siklls_on_employee_id", unique: true
-    t.index ["mst_skill_id"], name: "index_employee_siklls_on_mst_skill_id", unique: true
+    t.index ["employee_id"], name: "index_employee_siklls_on_employee_id"
+    t.index ["mst_skill_id"], name: "index_employee_siklls_on_mst_skill_id"
   end
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
