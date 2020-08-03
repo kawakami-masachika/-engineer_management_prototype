@@ -75,3 +75,67 @@ input[type="text"]{
     padding: 10px;
   }
 }
+
+// 
+.skill{
+  &-modal{
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: auto;
+    z-index: 2;
+    width: 80%;
+    margin: auto;
+    transform: translate(-50%, -50%);
+    background:$main-base-theme-color;
+    overflow-y:scroll;
+  }
+  &-box{
+    background:$main-base-theme-color;
+    margin-bottom: 20px;
+    border-top: 1px solid #dcdcdc;
+    border-left: 1px solid #dcdcdc;
+    &-wrapper{
+      padding: 10px;
+      margin-bottom: 5px;
+      width: 800px;
+      margin: auto;
+      margin-top:20px ;
+      height: 450px;
+    }
+    &-header{
+      display: table;
+      width: 100%;
+      &_top,&_wh,&_bk{
+        font-size: 0.75rem;
+        padding: 10px 5px;
+        text-align: center;
+        display: table-cell;
+        border-bottom: 1px solid #dcdcdc;
+        border-right: 1px solid #dcdcdc;
+      }
+      &_top{
+        display: table-cell;
+        height: 18px;
+        padding: 10px;
+      }
+      &_wh,&_bk{
+        width: 10%;
+      }
+      &_bk{
+        background: #f5f5f5;
+      }
+    }
+  }
+}
+.modal-bg{
+
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($color: #000000, $alpha: .75);
+}
