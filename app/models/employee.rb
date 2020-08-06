@@ -33,6 +33,7 @@ class Employee < ApplicationRecord
   validates :mst_gender_id, presence: true
   
   #自作バリデーション
+  validate :check_empty_licenses
   validate :license_unique?
   validate :check_empty_skills
   validate :skill_unique?
@@ -41,9 +42,15 @@ class Employee < ApplicationRecord
 
   #社員スキル 登録時に空の場合はレコードを削除する
   def check_empty_skills
-    binding.pry
-    self.employee_siklls.each do |skill|  
+    self.employee_siklls.each do |skill|
       skill.mark_for_destruction if skill[:mst_skill_id].blank? && skill[:sikll_period].blank? && skill[:level].blank?
+    end
+  end
+
+  #保有資格 登録・編集時に空の場合はレコードを削除する
+  def check_empty_licenses
+    self.licenses.each do |license|  
+      license.mark_for_destruction if license[:license].blank?
     end
   end
 

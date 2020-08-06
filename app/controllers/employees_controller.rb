@@ -33,6 +33,11 @@ class EmployeesController < ApplicationController
   end
 
   def edit
+    # 保有が登録されていない場合インスタンスを作成
+    if @employee.licenses.empty?
+      @employee.licenses.build
+    end
+
     # スキルが登録されていない場合インスタンスを作成
     if @employee.employee_siklls.empty?
       @employee.employee_siklls.build
