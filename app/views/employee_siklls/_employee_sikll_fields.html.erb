@@ -1,0 +1,66 @@
+<%= content_for :body do %>
+  <%= stylesheet_link_tag 'employee_siklls' %>
+<% end %>
+
+<!-- 仕様変更 -->
+<div class="skill-box-header nested-fields field" id="1">
+  <div class="skill-box-header_top"><%= select_tag  '選択',options_for_select(MstSkill.skill_type_codes, :skill_type_code), class: 'form-select' %></div>
+  <div class="skill-box-header_wh"><%= f.collection_select :mst_skill_id, MstSkill.all, :id, :skill, {:include_blank => true}, class: 'form-select'  %></div>
+  <div class="skill-box-header_bk"><%= f.select :sikll_period, EmployeeSikll.sikll_periods_i18n.invert, {:include_blank => true}, class: 'form-select' %></div>
+  <div class="skill-box-header_wh"><%= f.select :level, %w(1 2 3 4 5 6 7 8 9 10), {:include_blank => true}, class: 'form-select' %></div>
+  <div class="skill-box-header_bk"><%= link_to_remove_association "削除", f, class: 'btn btn-md btn-del js-btn-del-click'%></div>
+</div>
+<!-- 仕様変更 -->
+<script>
+
+  $('#btn-skill-add').on('click', function(){
+    $('.modal-bg').fadeIn(); 
+  });
+
+  $('.js-btn-del').on('click', function(){
+    $('.modal-bg').fadeOut();
+  });
+
+
+  $('.skill-box-header a.btn').first().css('display','none');
+  $(function(){
+    check_to_disable();
+
+    $('.skill-box-header').on('cocoon:after-insert',function(){
+      const btn_attribues = 'add';
+      check_to_hide_or_show_add_link(btn_attribues);
+    });
+
+      $('.skill-box-header').on('cocoon:after-remove', function() {
+        const btn_attribues ='remove';
+      check_to_hide_or_show_add_link(btn_attribues);
+    });
+
+    check_to_hide_or_show_add_link();
+
+    function check_to_hide_or_show_add_link(btn_attribues) {
+      if ($('.skill-box-header .nested-fields').length == 5) {
+        $('.skill-box-header a.btn-add').addClass('btn-disable');
+      } else {
+        check_to_disable();
+      }
+    }
+
+    function check_to_disable() {
+      const btn = $('.skill-box-header .nested-fields').first();
+
+      if ($('.skill-box-header .nested-fields').length ==  1) {
+        $('.skill-box-header a.btn-del').addClass('btn-disable');
+        $('.skill-box-header a.btn-del').hide();
+      }
+
+      if ($('.skill-box-header .nested-fields').length <=  4) {
+        $('.skill-box-header a.btn-add').removeClass('btn-disable');
+      }
+    }
+  });
+
+
+
+
+</script>

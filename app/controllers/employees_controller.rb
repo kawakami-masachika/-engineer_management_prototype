@@ -26,7 +26,6 @@ class EmployeesController < ApplicationController
     binding.pry
     params[:employee][:birth_date] = join_date
     @employee = Employee.new(employees_params)
-    binding.pry
     if @employee.save 
       redirect_to controller: 'employees', action: 'index'
     else
@@ -40,8 +39,8 @@ class EmployeesController < ApplicationController
   end
 
   def update
-    params[:employee][:birth_date] = join_date
     binding.pry
+    params[:employee][:birth_date] = join_date
     if @employee.update(employees_params)
       redirect_to controller: 'employees', action: 'index'
     else
