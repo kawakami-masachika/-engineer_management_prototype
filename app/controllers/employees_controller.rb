@@ -23,19 +23,20 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    binding.pry
     params[:employee][:birth_date] = join_date
     @employee = Employee.new(employees_params)
     if @employee.save 
       redirect_to controller: 'employees', action: 'index'
     else
-      # set_skills
       render action: 'new'
     end
   end
 
   def edit
-    # binding.pry
+    # スキルが登録されていない場合インスタンスを作成
+    if @employee.employee_siklls.empty?
+      @employee.employee_siklls.build
+    end
   end
 
   def update
