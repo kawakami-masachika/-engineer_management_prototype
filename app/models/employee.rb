@@ -1,6 +1,8 @@
 class Employee < ApplicationRecord
   # コールバック
   before_validation :set_employee_id, :trim
+  # before_validation :check_empty_skills
+  before_save :check_empty_skills
 
   # 論理削除
   acts_as_paranoid
@@ -15,6 +17,7 @@ class Employee < ApplicationRecord
   accepts_nested_attributes_for :licenses, allow_destroy: true
   accepts_nested_attributes_for :introduction
   accepts_nested_attributes_for :employee_siklls, allow_destroy: true
+
   # バリデーション
   validates :employee_id, presence: true
   validates :last_name, presence: true
@@ -23,14 +26,26 @@ class Employee < ApplicationRecord
   validates :kana_first_name, presence: true
   validates :birth_date, presence: true
   validates :join_date, presence: true
-  validates :experience, presence: true
+  # validates :experience, presence: true
   validates :line, presence: true
   validates :station, presence: true
   validates :mst_employee_type_id, presence: true
   validates :mst_gender_id, presence: true
-
+  
   #自作バリデーション
   validate :license_unique?
+  validate :check_empty_skills
+  validate :skill_unique?
+
+  validates_associated :employee_siklls
+
+  #社員スキル 登録時に空の場合はレコードを削除する
+  def check_empty_skills
+    binding.pry
+    self.employee_siklls.each do |skill|  
+      skill.mark_for_destruction if skill[:mst_skill_id].blank? && skill[:sikll_period].blank? && skill[:level].blank?
+    end
+  end
 
   #ページネーション デフォルト件数
   paginates_per 20
@@ -114,6 +129,25 @@ class Employee < ApplicationRecord
           errors.add(:licenses, "が重複しています")
         end
       end
+  end
+
+  def skill_unique?
+    skills = []
+
+    employee_siklls.each do |skill|
+      if skill[:mst_skill_id].blank? && skill[:sikll_period].blank? && skill[:level].blank? 
+        next 
+      else 
+        skills << skill[:mst_skill_id]
+      end
+    end
+
+    binding.pry
+    if skills.length > 0
+      if skills.length != skills.uniq.length 
+        errors.add(:skills, "が重複しています")
+      end
+    end
   end
 
 end
