@@ -92,11 +92,14 @@ class Employee < ApplicationRecord
   end
 
   def set_employee_id
-    ActiveRecord::Base.uncached do
-      # シーケンスのインクリメント
-      EmployeeSeqence.connection.execute('UPDATE employee_seqences SET id = LAST_INSERT_ID(id+1)')
-      employee_id = EmployeeSeqence.find_by_sql('SELECT SQL_NO_CACHE LAST_INSERT_ID() AS id').first
-      padding_employee_id(employee_id)
+    # 社員番号の空をチェック
+    if self.employee_id.blank?
+      ActiveRecord::Base.uncached do
+        # シーケンスのインクリメント
+        EmployeeSeqence.connection.execute('UPDATE employee_seqences SET id = LAST_INSERT_ID(id+1)')
+        employee_id = EmployeeSeqence.find_by_sql('SELECT SQL_NO_CACHE LAST_INSERT_ID() AS id').first
+        padding_employee_id(employee_id)
+      end
     end
   end
 
