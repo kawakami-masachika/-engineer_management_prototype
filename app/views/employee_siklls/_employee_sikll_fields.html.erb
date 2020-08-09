@@ -4,7 +4,7 @@
 
 <!-- 仕様変更 -->
 <div class="skill-box-header nested-fields field" id="1">
-  <div class="skill-box-header_top"><%= select_tag  '選択',options_for_select(MstSkill.skill_type_codes, :skill_type_code), class: 'form-select' %></div>
+  <div class="skill-box-header_top"><%= select_tag  '選択',options_from_collection_for_select(MstSkillCategory.all, :id, :category), class: 'form-select' %></div>
   <div class="skill-box-header_wh"><%= f.collection_select :mst_skill_id, MstSkill.all, :id, :skill, {:include_blank => true}, class: 'form-select'  %></div>
   <div class="skill-box-header_bk"><%= f.select :sikll_period, EmployeeSikll.sikll_periods_i18n.invert, {:include_blank => true}, class: 'form-select' %></div>
   <div class="skill-box-header_wh"><%= f.select :level, %w(1 2 3 4 5 6 7 8 9 10), {:include_blank => true}, class: 'form-select' %></div>
