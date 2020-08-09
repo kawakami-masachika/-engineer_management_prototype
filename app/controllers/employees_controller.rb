@@ -1,9 +1,26 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only:[:edit, :update, :show, :destroy]
-  # before_action :set_skills, only:[:new]
   def index
+    # ソート時に再度文字列の分割を防ぐため、チェック
+    if !params[:q].nil? && params[:q]["first_name_or_last_name_cont_any"].class == String
+      params[:q]["first_name_or_last_name_cont_any"]  = params[:q]["first_name_or_last_name_cont_any"].try{|param| param.split(/[[:blank:]]/)}
+    end
+
     @q = Employee.ransack(params[:q])
+
     @employees = @q.result.page(params[:page])
+
+    if !params[:q].nil?
+      mst_skill_ids = params[:q]["employee_siklls_mst_skill_id"].values
+    end
+
+    if !params[:q].nil? && @employees.check_mst_skill_ids_empty(mst_skill_ids)
+      if mst_skill_ids.include?("")
+        mst_skill_ids = @employees.delete_empty_skills(mst_skill_ids)
+      end
+      @employees = @employees.have_emoloyee_skills(mst_skill_ids)
+    end
+
     @q.sorts = 'employee_id asc' if @q.sorts.empty?
 
     @names = []
@@ -45,7 +62,6 @@ class EmployeesController < ApplicationController
   end
 
   def update
-    binding.pry
     params[:employee][:birth_date] = join_date
     if @employee.update(employees_params)
       redirect_to controller: 'employees', action: 'index'
