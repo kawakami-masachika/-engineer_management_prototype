@@ -120,6 +120,27 @@ class Employee < ApplicationRecord
       #例外を考慮する
     end
   end
+  
+  scope :have_emoloyee_skills, -> (mst_skills){
+    binding.pry
+    mst_skills.map{|mst_skill_id|mst_skill_id.to_i}
+    joins(:employee_siklls).merge(EmployeeSikll.where(mst_skill_id: mst_skills)).distinct
+  }
+
+  # 検索時 社員スキルパラメータチェック
+  def self.check_mst_skill_ids_empty(mst_skill_ids)
+    mst_skill_ids = mst_skill_ids.select{|skill_id| skill_id != ""}
+    binding.pry
+    if mst_skill_ids.length > 0
+      return true
+    else
+      return false
+    end
+  end
+
+  def self.delete_empty_skills(mst_skill_ids)
+    return mst_skill_ids.delete_if{|skill_id| skill_id.empty?}
+  end
 
   private
 
