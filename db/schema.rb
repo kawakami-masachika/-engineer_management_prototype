@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_31_093607) do
+ActiveRecord::Schema.define(version: 2020_08_09_043112) do
 
   create_table "employee_seqences", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -71,9 +71,14 @@ ActiveRecord::Schema.define(version: 2020_07_31_093607) do
     t.integer "data_status", null: false
   end
 
+  create_table "mst_skill_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "category"
+  end
+
   create_table "mst_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "skill_type_code", limit: 1
     t.string "skill"
+    t.bigint "mst_skill_category_id", null: false
+    t.index ["mst_skill_category_id"], name: "index_mst_skills_on_mst_skill_category_id"
   end
 
   add_foreign_key "employee_siklls", "employees"
@@ -82,4 +87,5 @@ ActiveRecord::Schema.define(version: 2020_07_31_093607) do
   add_foreign_key "employees", "mst_genders"
   add_foreign_key "introductions", "employees"
   add_foreign_key "licenses", "employees"
+  add_foreign_key "mst_skills", "mst_skill_categories"
 end

@@ -44,11 +44,11 @@ class EmployeeSikllsController < ApplicationController
 
   def set_skills
     @mst_skills = MstSkill.all
-    @os = @mst_skills.select{|skill| skill.read_attribute_before_type_cast(:skill_type_code) == 1}
-    @f_language = @mst_skills.select{|skill| skill.read_attribute_before_type_cast(:skill_type_code) == 2}
-    @ss_language = @mst_skills.select{|skill| skill.read_attribute_before_type_cast(:skill_type_code) == 3}
-    @db = @mst_skills.select{|skill| skill.read_attribute_before_type_cast(:skill_type_code) == 4}
-    @fw = @mst_skills.select{|skill| skill.read_attribute_before_type_cast(:skill_type_code) == 5}
+    @os = @mst_skills.select{|skill| skill.read_attribute_before_type_cast(:mst_skill_category_id) == 1}
+    @f_language = @mst_skills.select{|skill| skill.read_attribute_before_type_cast(:mst_skill_category_id) == 2}
+    @ss_language = @mst_skills.select{|skill| skill.read_attribute_before_type_cast(:mst_skill_category_id) == 3}
+    @db = @mst_skills.select{|skill| skill.read_attribute_before_type_cast(:mst_skill_category_id) == 4}
+    @fw = @mst_skills.select{|skill| skill.read_attribute_before_type_cast(:mst_skill_category_id) == 5}
   end
 
   def employee_skill_params
