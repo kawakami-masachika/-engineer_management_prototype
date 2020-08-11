@@ -1,0 +1,15 @@
+MstPhase.seed_once(:id,
+  {id:1, phase:'要件定義',deleted_at: nil},
+  {id:2, phase:'基本設計',deleted_at: nil},
+  {id:3, phase:'詳細設計',deleted_at: nil},
+  {id:4, phase:'構築',deleted_at: nil},
+  {id:5, phase:'製造',deleted_at: nil},
+  {id:6, phase:'単体テスト',deleted_at: nil},
+  {id:7, phase:'結合テスト',deleted_at: nil},
+  {id:8, phase:'総合テスト',deleted_at: nil},
+  {id:9, phase:'運用テスト',deleted_at: nil},
+  {id:10, phase:'システム移行',deleted_at: nil},
+  {id:11, phase:'保守・運用',deleted_at: nil},
+  {id:12, phase:'監視',deleted_at: nil},
+  {id:99, phase:'その他',deleted_at: nil}
+)

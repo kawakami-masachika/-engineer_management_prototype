@@ -11,5 +11,5 @@ MstIndustry.seed_once(:id,
   {id:10, industry:'エネルギー・資源',deleted_at: nil},
   {id:11, industry:'エンタメ・レジャー',deleted_at: nil},
   {id:12, industry:'サービス',deleted_at: nil},
-  {id:12, industry:'ソフトウェア・通信',deleted_at: nil}
+  {id:13, industry:'ソフトウェア・通信',deleted_at: nil}
 )
