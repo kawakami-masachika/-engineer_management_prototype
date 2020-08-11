@@ -1,0 +1,15 @@
+MstIndustry.seed_once(:id,
+  {id:1, industry:'医療',deleted_at: nil},
+  {id:2, industry:'運輸・物流',deleted_at: nil},
+  {id:3, industry:'官公庁',deleted_at: nil},
+  {id:4, industry:'金融',deleted_at: nil},
+  {id:5, industry:'建設・不動産',deleted_at: nil},
+  {id:6, industry:'広告・メディア',deleted_at: nil},
+  {id:7, industry:'食品・飲食',deleted_at: nil},
+  {id:8, industry:'電気・精密機械',deleted_at: nil},
+  {id:9, industry:'流通・小売',deleted_at: nil},
+  {id:10, industry:'エネルギー・資源',deleted_at: nil},
+  {id:11, industry:'エンタメ・レジャー',deleted_at: nil},
+  {id:12, industry:'サービス',deleted_at: nil},
+  {id:12, industry:'ソフトウェア・通信',deleted_at: nil}
+)
