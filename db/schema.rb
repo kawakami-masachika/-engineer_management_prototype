@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_11_133524) do
+ActiveRecord::Schema.define(version: 2020_08_11_135347) do
 
   create_table "employee_seqences", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -75,6 +75,12 @@ ActiveRecord::Schema.define(version: 2020_08_11_133524) do
     t.string "industry", null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_mst_industries_on_deleted_at"
+  end
+
+  create_table "mst_phases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "phase", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_mst_phases_on_deleted_at"
   end
 
   create_table "mst_skill_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
