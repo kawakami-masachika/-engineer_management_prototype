@@ -122,7 +122,6 @@ class Employee < ApplicationRecord
   end
   
   scope :have_emoloyee_skills, -> (mst_skills){
-    binding.pry
     mst_skills.map{|mst_skill_id|mst_skill_id.to_i}
     joins(:employee_siklls).merge(EmployeeSikll.where(mst_skill_id: mst_skills)).distinct
   }
@@ -130,7 +129,6 @@ class Employee < ApplicationRecord
   # 検索時 社員スキルパラメータチェック
   def self.check_mst_skill_ids_empty(mst_skill_ids)
     mst_skill_ids = mst_skill_ids.select{|skill_id| skill_id != ""}
-    binding.pry
     if mst_skill_ids.length > 0
       return true
     else
