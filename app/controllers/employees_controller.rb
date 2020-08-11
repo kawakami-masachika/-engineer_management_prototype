@@ -50,7 +50,6 @@ class EmployeesController < ApplicationController
   end
 
   def edit
-    binding.pry
     # 保有が登録されていない場合インスタンスを作成
     if @employee.licenses.empty?
       @employee.licenses.build

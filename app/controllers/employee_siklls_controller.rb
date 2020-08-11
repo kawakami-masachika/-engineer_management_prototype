@@ -8,7 +8,6 @@ class EmployeeSikllsController < ApplicationController
   def create
     attributes = []
     attributes = employee_skill_params
-    binding.pry
     check_params(attributes)
 
     attributes.length.times do|index|
@@ -18,7 +17,6 @@ class EmployeeSikllsController < ApplicationController
                             sikll_period: attributes[index]["sikll_period"],
                             level: attributes[index]["level"]
                           )
-                          binding.pry
         if @employee_sikll.save
           if index + 1 == attributes.length
             redirect_to controller: 'employees', action: 'index'
