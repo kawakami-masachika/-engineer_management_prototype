@@ -52,13 +52,18 @@
             </label>
           </div>
         </div><!-- employee_type -->
-        <div>
+        <div class="serach-skill">
           <%= f.label :employee_siklls_mst_skill_id_1_eq, 'スキル' %>
-          <%= f.collection_select :employee_siklls_mst_skill_id, MstSkill.all, :id, :skill, {:include_blank => true}, class: 'form-select' ,name: 'q[employee_siklls_mst_skill_id][0]'%>
-        </div>
-        <div>
-          <%= f.label :employee_siklls_mst_skill_id_2_eq, 'スキル' %>
-          <%= f.collection_select :employee_siklls_mst_skill_id, MstSkill.all, :id, :skill, {:include_blank => true}, class: 'form-select' ,name: 'q[employee_siklls_mst_skill_id][1]' %>
+          <% skill_category_options = MstSkillCategory.order(:id).map{|msc| [msc.category, msc.id, data:{mst_skill_path: mst_skill_category_mst_skills_path(msc)}]} %>
+          <%= f.select :id ,skill_category_options ,{include_blank: true}, class: 'form-select category-select' %>
+
+          <%= f.collection_select :employee_siklls_mst_skill_id, [], :id, :skill, {:include_blank => true}, class: 'form-select category-select-children' ,name: 'q[employee_siklls_mst_skill_id][0]'%>
+
+          <%= f.label :employee_siklls_mst_skill_id_1_eq, 'スキル' %>
+          <% skill_category_options = MstSkillCategory.order(:id).map{|msc| [msc.category, msc.id, data:{mst_skill_path: mst_skill_category_mst_skills_path(msc)}]} %>
+          <%= f.select :id ,skill_category_options ,{include_blank: true}, class: 'form-select category-select' %>
+
+          <%= f.collection_select :employee_siklls_mst_skill_id, [], :id, :skill, {:include_blank => true}, class: 'form-select category-select-children' ,name: 'q[employee_siklls_mst_skill_id][0]'%>
         </div>
         <div class="actions"><%= f.submit "検索" %></div>
       <% end %>
@@ -102,7 +107,9 @@
 
   </div>
 </div>
+
 <script>
+  // 検索欄 開閉ボタン
   $(function(){
     $('.serach-content').hide();
 
@@ -110,4 +117,47 @@
       $(this).next().slideToggle();
     });
   });
+
+  function replaceChildrenOptions(){
+    // 選択された親カテゴリーのdata属性から、小カテゴリーのパスを取得する。
+    const children = $(this).find('option:selected').val()
+    // 変更されたセレクトボックスの値を取得する
+    const select_index = $('.category-select').index(this);
+    // 小カテゴリのセレクトボックスを取得する
+    $selectChidren = $(this).closest('.serach-skill').find('.category-select-children');
+
+
+    if (children !== null && children !== ""){
+      $.ajax({
+        url: `/mst_skill_categories/${children}/mst_skills`,
+        type: 'get',
+        cache: false,
+        dataType:'json',
+        })
+        .done(function(result){
+          //通信に成功した場合の処理
+          $('.category-select').each(function(i){
+            // if開始
+            if(i === select_index){
+              $(`.category-select-children:eq(${i}) > option`).remove();
+
+              $(result).each(function(index,element){
+                $selectChidren.eq(i).append($('<option>').html(element['skill']).val(element['id']));
+              })
+            }
+            // if終了
+          });
+        })
+        .fail(function(){
+          //通信に失敗した場合の処理
+        })
+      }
+    else{
+      $(`.category-select-children:eq(${select_index}) > option`).remove();
+    }
+  }
+
+  $('.category-select').on('change',replaceChildrenOptions);
 </script>
+
+
