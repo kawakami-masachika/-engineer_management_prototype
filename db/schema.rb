@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_032855) do
+ActiveRecord::Schema.define(version: 2020_08_12_050730) do
 
   create_table "adopt_technologies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "project_id", null: false
     t.bigint "mst_skill_id", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_adopt_technologies_on_deleted_at"
     t.index ["mst_skill_id"], name: "index_adopt_technologies_on_mst_skill_id"
     t.index ["project_id"], name: "index_adopt_technologies_on_project_id"
   end
