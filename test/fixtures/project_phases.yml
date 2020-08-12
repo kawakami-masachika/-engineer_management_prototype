@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  employee: one
+  mst_phase: one
+
+two:
+  project: two
+  employee: two
+  mst_phase: two

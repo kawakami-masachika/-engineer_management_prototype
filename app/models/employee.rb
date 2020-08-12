@@ -12,6 +12,7 @@ class Employee < ApplicationRecord
   has_many :licenses, dependent: :destroy
   has_many :employee_siklls
   has_many :mst_skills, through: :employee_siklls
+  has_many :project_phases, dependent: :destroy
   belongs_to :mst_gender
   belongs_to :mst_employee_type
   accepts_nested_attributes_for :licenses, allow_destroy: true
