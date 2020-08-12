@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_023248) do
+ActiveRecord::Schema.define(version: 2020_08_12_032855) do
+
+  create_table "adopt_technologies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "mst_skill_id", null: false
+    t.index ["mst_skill_id"], name: "index_adopt_technologies_on_mst_skill_id"
+    t.index ["project_id"], name: "index_adopt_technologies_on_project_id"
+  end
 
   create_table "employee_seqences", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -120,6 +127,8 @@ ActiveRecord::Schema.define(version: 2020_08_12_023248) do
     t.index ["mst_industry_id"], name: "index_projects_on_mst_industry_id"
   end
 
+  add_foreign_key "adopt_technologies", "mst_skills"
+  add_foreign_key "adopt_technologies", "projects"
   add_foreign_key "employee_siklls", "employees"
   add_foreign_key "employee_siklls", "mst_skills"
   add_foreign_key "employees", "mst_employee_types"
