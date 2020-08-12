@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_050730) do
+ActiveRecord::Schema.define(version: 2020_08_12_074118) do
 
   create_table "adopt_technologies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "project_id", null: false
@@ -108,6 +108,20 @@ ActiveRecord::Schema.define(version: 2020_08_12_050730) do
     t.index ["mst_skill_category_id"], name: "index_mst_skills_on_mst_skill_category_id"
   end
 
+  create_table "project_members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.bigint "project_id", null: false
+    t.date "join_date", null: false
+    t.date "leave_date"
+    t.bigint "mst_position_id", null: false
+    t.boolean "end_flg", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_project_members_on_deleted_at"
+    t.index ["employee_id"], name: "index_project_members_on_employee_id"
+    t.index ["mst_position_id"], name: "index_project_members_on_mst_position_id"
+    t.index ["project_id"], name: "index_project_members_on_project_id"
+  end
+
   create_table "project_phases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "employee_id"
@@ -138,6 +152,9 @@ ActiveRecord::Schema.define(version: 2020_08_12_050730) do
   add_foreign_key "introductions", "employees"
   add_foreign_key "licenses", "employees"
   add_foreign_key "mst_skills", "mst_skill_categories"
+  add_foreign_key "project_members", "employees"
+  add_foreign_key "project_members", "mst_positions"
+  add_foreign_key "project_members", "projects"
   add_foreign_key "project_phases", "employees"
   add_foreign_key "project_phases", "mst_phases"
   add_foreign_key "project_phases", "projects"

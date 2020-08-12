@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  project: one
+  join_date: 2020-08-12
+  leave_date: 2020-08-12
+  mst_position: one
+  end_flg: false
+
+two:
+  employee: two
+  project: two
+  join_date: 2020-08-12
+  leave_date: 2020-08-12
+  mst_position: two
+  end_flg: false
