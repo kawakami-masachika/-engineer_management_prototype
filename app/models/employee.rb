@@ -12,6 +12,8 @@ class Employee < ApplicationRecord
   has_many :licenses, dependent: :destroy
   has_many :employee_siklls
   has_many :mst_skills, through: :employee_siklls
+  has_many :project_members, dependent: :destroy
+  has_many :projects, through: :project_members
   has_many :project_phases, dependent: :destroy
   belongs_to :mst_gender
   belongs_to :mst_employee_type
