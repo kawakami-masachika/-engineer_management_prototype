@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_name: MyString
+  mst_industry: one
+  members: 1
+  summary: MyText
+
+two:
+  project_name: MyString
+  mst_industry: two
+  members: 1
+  summary: MyText

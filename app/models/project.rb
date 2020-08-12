@@ -1,6 +1,6 @@
-class MstIndustry < ApplicationRecord
+class Project < ApplicationRecord
   # 関連付け
-  has_many :projects
+  belongs_to :mst_industry
 
   # 論理削除カラム追加
   acts_as_paranoid
