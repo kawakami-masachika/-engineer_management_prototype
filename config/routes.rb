@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  # get 'employee_skill/new'
+  root to: 'employees#index'
+
   resources :employees do
+    resources :projects, except: %w(destroy)
     resources :employee_siklls
   end
+
+  resources :projects, only: %w(index show)
+
   resources :mst_skill_categories, only: [] do
-    resources :mst_skills, only: :index
+    resources :mst_skills, only: %w(index)
   end
 
 end
