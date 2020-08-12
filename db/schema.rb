@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_11_143950) do
+ActiveRecord::Schema.define(version: 2020_08_12_013450) do
 
   create_table "employee_seqences", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -99,6 +99,16 @@ ActiveRecord::Schema.define(version: 2020_08_11_143950) do
     t.index ["mst_skill_category_id"], name: "index_mst_skills_on_mst_skill_category_id"
   end
 
+  create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "project_name", limit: 50, null: false
+    t.bigint "mst_industry_id"
+    t.integer "members", limit: 1, null: false
+    t.text "summary", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_projects_on_deleted_at"
+    t.index ["mst_industry_id"], name: "index_projects_on_mst_industry_id"
+  end
+
   add_foreign_key "employee_siklls", "employees"
   add_foreign_key "employee_siklls", "mst_skills"
   add_foreign_key "employees", "mst_employee_types"
@@ -106,4 +116,5 @@ ActiveRecord::Schema.define(version: 2020_08_11_143950) do
   add_foreign_key "introductions", "employees"
   add_foreign_key "licenses", "employees"
   add_foreign_key "mst_skills", "mst_skill_categories"
+  add_foreign_key "projects", "mst_industries"
 end
