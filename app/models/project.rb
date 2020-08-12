@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   # 関連付け
-  has_many :project_phases ,dependent: :destroy
-  has_many :adopt_technologies
+  has_many :project_phases, dependent: :destroy
+  has_many :adopt_technologies, dependent: :destroy
   has_many :mst_skills, through: :adopt_technologies
   belongs_to :mst_industry
 
