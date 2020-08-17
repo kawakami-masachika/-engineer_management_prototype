@@ -1,0 +1,21 @@
+.header {
+  padding: 30px 0;
+  background: #003265;
+}
+
+.header__inner {
+  width: 1180px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.mgr-20 {
+  margin-right: 20px;
+  color: #fff;
+}
+
+.btn {
+  background-color: #a09c9c;
+}

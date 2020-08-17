@@ -148,6 +148,15 @@ class Employee < ApplicationRecord
     return mst_skill_ids.delete_if{|skill_id| skill_id.empty?}
   end
 
+  def self.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def self.encrypt(token)
+    Digest::SHA256.hexdigest(token.to_s)
+  end
+
+
   private
 
   def trim

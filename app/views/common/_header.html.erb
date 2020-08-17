@@ -1,0 +1,15 @@
+<%= content_for :body do %>
+  <%= stylesheet_link_tag 'common/header.css' %>
+<% end %>
+
+<header class="header">
+  <div class="header__inner">
+    <div class="header__inner-link">
+      <a class="mgr-20" href="st_02_index.html">社員一覧</a>
+      <a class="mgr-20" href="st_08_">プロジェクト一覧</a>
+    </div>
+    <div class="btn-area btn-area__introduce">
+      <%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-wide btn-delete' %>
+    </div>
+  </div>
+</header>

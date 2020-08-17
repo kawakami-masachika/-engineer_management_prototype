@@ -1,0 +1,22 @@
+<%= content_for :body do %>
+  <%= stylesheet_link_tag 'login/login' %>
+<% end %>
+<div class="main st1_login">
+  <div class="main__inner st1_login__inner">
+    <h1 class="title sys-title">エンジニア情報管理システム</h1>
+    <%= form_with url: login_path, local: true do |f| %>
+      <%= f.text_field :mail %>
+      <%= f.password_field :password %>
+      <%=f.submit %>
+    <% end %>
+    <form class="form login_form form-area">
+
+      <!--<input type="text" id="user_name" placeholder="ユーザー名">
+
+      <input type="password" id="password" placeholder="パスワード">
+      
+      <input class="btn btn-lg btn--login" type="submit" value="ログイン">-->
+    </form>
+
+  </div>
+</div>
