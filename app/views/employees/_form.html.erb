@@ -196,6 +196,31 @@
             </div>
           </div>
 
+        <div><!-- employee mail STA -->
+          <div class="form-area__station-line">
+          <p class="form-label"><%= f.label :mail %></p>
+            <%= f.text_field :mail, class:'form-text', placeholder:'exmaple@exmaple.com' %>
+            <span>&nbsp&nbsp</span>
+          </div>
+        </div><!-- employee mail END -->
+        
+        <div><!-- employee password STA -->
+          <div class="form-area__station-line">
+          <p class="form-label"><%= f.label :password %></p>
+            <%= f.password_field :password_confirmation, class:'form-text' %>
+          </div>
+        </div><!-- employee password END -->
+
+        <div><!-- employee password_confirmation STA -->
+          <div class="form-area__station-line">
+          <p class="form-label"><%= f.label :password_confirmation %></p>
+            <%= f.password_field :password_confirmation, class:'form-text' %>
+          </div>
+        </div><!-- employee password_confirmation END -->
+
+
+
+
         <div class="btn-wrapper">
           <%=f.submit class: 'btn btn-wide btn-submit' %>
         </div>

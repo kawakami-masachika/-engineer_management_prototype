@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_074118) do
+ActiveRecord::Schema.define(version: 2020_08_17_015009) do
 
   create_table "adopt_technologies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "project_id", null: false
@@ -49,6 +49,10 @@ ActiveRecord::Schema.define(version: 2020_08_12_074118) do
     t.bigint "mst_gender_id", null: false
     t.bigint "mst_employee_type_id", null: false
     t.datetime "deleted_at"
+    t.string "mail", limit: 100, null: false
+    t.string "password_digest", limit: 30, null: false
+    t.string "remember_token"
+    t.boolean "admin", default: false
     t.index ["deleted_at"], name: "index_employees_on_deleted_at"
     t.index ["mst_employee_type_id"], name: "index_employees_on_mst_employee_type_id"
     t.index ["mst_gender_id"], name: "index_employees_on_mst_gender_id"

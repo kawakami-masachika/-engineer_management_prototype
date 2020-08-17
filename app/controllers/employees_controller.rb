@@ -93,8 +93,8 @@ class EmployeesController < ApplicationController
   end
 
   def employees_params
-    params.require(:employee).permit(:employee_id, :last_name, :first_name, :kana_last_name, :kana_first_name, 
-                                    :birth_date, :join_date, :experience, :line, :station, :mst_employee_type_id,
+    params.require(:employee).permit(:employee_id, :last_name, :first_name, :kana_last_name, :kana_first_name, :birth_date, 
+                                    :join_date, :experience, :line, :station, :mst_employee_type_id, :mail, :password, :password_confirmation,
                                     :mst_gender_id, [licenses_attributes:[:id, :license, :_destroy]],
                                     [introduction_attributes:[:id,:introduction]],[employee_siklls_attributes:[:id, :employee_id, :mst_skill_id, :sikll_period, :level]])
   end
