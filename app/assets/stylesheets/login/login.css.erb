@@ -1,0 +1,342 @@
+@charset "UTF-8";
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+/* ベース */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'M PLUS 1p', sans-serif !important;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #333;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #5F5F5F;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+.main {
+  padding-top: 60px;
+  text-align: center;
+}
+
+.main__inner {
+  width: 1080px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.25rem;
+  letter-spacing: 2px;
+}
+
+.page-title {
+  font-size: 1.5rem;
+}
+
+.section-title {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.section-title-new, .section-title-edit {
+  margin-bottom: 20px;
+}
+
+.btn {
+  color: #fff;
+  border-radius: 3px;
+  font-weight: 400;
+  transition: .5s;
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.btn-wrapper {
+  margin-top: 20px;
+}
+
+.btn-sm {
+  font-size: 0.75rem;
+}
+
+.btn-md {
+  padding: 10px 20px;
+}
+
+.btn-lg {
+  font-size: 1.5rem;
+  padding: 10px 50px;
+}
+
+.btn-wide {
+  padding: 5px 80px;
+}
+
+.btn-info {
+  background: #0773c6;
+}
+
+.btn-info:hover {
+  background: transparent;
+  color: #0773c6;
+  border-color: #0773c6;
+}
+
+.btn-submit {
+  background: #0773c6;
+}
+
+.btn-add {
+  background: #2590D0;
+}
+
+.btn-del {
+  background: #f74955;
+}
+
+.btn-edit {
+  background: #0773c6;
+}
+
+.btn-delete {
+  background: #f74955;
+}
+
+.btn-search {
+  background: #808080;
+}
+
+.btn-reset {
+  background: #808080;
+}
+
+.btn-disable {
+  pointer-events: none;
+  position: relative;
+  border: 1px solid;
+}
+
+.btn-disable::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  padding: inherit;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.form-area {
+  margin-top: 40px;
+  max-width: 100%;
+  margin: auto;
+  padding: 40px;
+}
+
+.form-label {
+  display: block;
+  text-align: left;
+  line-height: 2;
+  padding-left: 10px;
+}
+
+input[type="text"], input[type="password"] {
+  display: block;
+  border: none;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  letter-spacing: 1.5px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  outline: none;
+}
+
+.pagination span {
+  display: block;
+  border-top: 1px solid #e9e9e9;
+  border-left: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
+  transition: 0.3s;
+}
+
+.pagination span:first-child {
+  border-radius: 3px 0 0 3px;
+}
+
+.pagination span:last-child {
+  border-right: 1px solid #e9e9e9;
+  border-radius: 0 3px 3px 0;
+}
+
+.pagination span > a {
+  display: block;
+  padding: 10px;
+}
+
+.pagination span:hover {
+  background: #0773c6;
+}
+
+.pagination span:hover:hover > a {
+  color: #fff;
+}
+
+.pagination .current {
+  background: #0773c6;
+  color: #fff;
+  padding: 10px;
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  border: 1px double #b0b0b0;
+  border-radius: 50%;
+}
+
+.table {
+  table-layout: fixed;
+}
+
+.table__head {
+  padding: 15px 0;
+}
+
+.table__thead {
+  background: #e9e9e9;
+}
+
+.table__row {
+  border-top: 1px solid #e9e9e9;
+  transition: 0.3s ease-in;
+}
+
+.table__row:hover {
+  background: #b0ddff;
+}
+
+.table__row-thead {
+  padding: 20px 0;
+}
+
+.table__text {
+  padding: 10px;
+}
+
+.table__text-radio {
+  position: relative;
+}
+
+.table__text-radio > .table__text--inner--label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.table__text-radio > .table__text--inner--label > input[type="radio"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.st1_login {
+  position: relative;
+  padding: 120px;
+  background: linear-gradient(30deg, rgba(0, 145, 255, 0.4), rgba(8, 254, 248, 0.5)), url(<%= asset_path('login_main-visual.jpg')%>) center no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.sys-title {
+  text-align: center;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 120px;
+}
+
+.btn--login {
+  color: #fff;
+  border: 1px solid #fff;
+  background: linear-gradient(45deg, #0091ff, #08FEF8);
+  outline: none;
+}
+
+.btn--login:hover {
+  color: #0091ff;
+  border-color: #0091ff;
+  background: #fff;
+}
+
+.login_form {
+  border-radius: 5px;
+  background: #fff;
+}
+
+input[type="text"], input[type="password"] {
+  width: 80%;
+  padding: 20px 10px 5px;
+  border-bottom: 1px solid #5F5F5F;
+}

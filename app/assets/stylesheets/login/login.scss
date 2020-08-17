@@ -1,0 +1,42 @@
+@import '../application.scss';
+
+// wrap
+.st1_login{
+  position: relative;
+  padding: 120px;
+  background: linear-gradient(30deg, rgba(0,145,255,0.4), rgba(8,254,248,0.5)), url('../../images/login_main-visual.jpg') center no-repeat;
+  background-size: cover;
+  height: 100vh;
+  &__inner{
+  }
+}
+
+.sys-title{
+  text-align: center;
+  color: $font-color-white;
+  font-weight: 400;
+  margin-bottom: 120px;
+}
+
+.btn--login{
+  color: $font-color-white;
+  border:1px solid #fff;
+  background: linear-gradient(45deg, $main-theme-color, $sub-theme-color);
+  outline: none;
+}
+
+.btn--login:hover{
+  color: $main-theme-color;
+  border-color: $main-theme-color;
+  background: $main-base-theme-color;
+}
+
+.login_form{
+  border-radius: 5px;
+  background: $main-base-theme-color;
+}
+input[type="text"],input[type="password"]{
+  width: 80%;
+  padding: 20px 10px 5px;
+  border-bottom: 1px solid #5F5F5F;
+}

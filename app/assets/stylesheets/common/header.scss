@@ -1,0 +1,26 @@
+$header-color:#003265;
+$header-width:1180px;
+$font-color-white:#fff;
+
+.header{
+  padding:30px 0;
+  background: $header-color;
+  
+  &__inner{
+    
+    width: $header-width;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.mgr-20{
+  margin-right: 20px;
+  color: $font-color-white;
+}
+
+.btn{
+  background-color: rgb(160, 156, 156);
+}
