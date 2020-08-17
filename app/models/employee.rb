@@ -7,6 +7,10 @@ class Employee < ApplicationRecord
   # 論理削除
   acts_as_paranoid
 
+  # 
+  has_secure_password validations: true
+
+
   #関連付け
   has_one :introduction, dependent: :destroy
   has_many :licenses, dependent: :destroy
@@ -34,6 +38,7 @@ class Employee < ApplicationRecord
   validates :station, presence: true
   validates :mst_employee_type_id, presence: true
   validates :mst_gender_id, presence: true
+  validates :mail, presence: true, uniqueness: true
   
   #自作バリデーション
   validate :check_empty_licenses
