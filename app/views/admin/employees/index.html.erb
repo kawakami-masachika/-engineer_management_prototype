@@ -1,0 +1,163 @@
+<%= content_for :body do %>
+  <%= stylesheet_link_tag 'employees_index' %>
+<% end %>
+<div class="main st_02-employee-list ly-st_02-employee-list">
+  <div class="main__inner st_02-employee-list__inner">
+    
+    <h2 class="title page-title">メンバーリスト</h2>
+  <div>
+    <span id="js-serach-menu">+</span>
+    <div class="serach-content">
+      <%= search_form_for @q, enforce_utf8: false,url: employees_path, class:"text-left" do |f|%>
+        <div>
+          <div>
+            <%= f.label :Ememployee_id_cont, '社員番号' %>
+            <%= f.search_field :employee_id_eq, class: 'form-text' %>
+          </div>
+          <div>
+            <%= f.label :first_name_or_last_name_cont, '名前' %>
+            <%= f.search_field :first_name_or_last_name_cont_any, class: 'form-text' %>
+          </div>
+        </div>
+        <div>
+          <%= f.label :birth_date, '生年月日' %>
+          <%= f.date_select :birth_date_gt, {include_blank: true, start_year: 1950, use_month_numbers: true, with_css_classes:true, date_separator: ' / '}%>〜
+          <%= f.date_select :birth_date_lt, {include_blank: true, start_year: 1999, use_month_numbers: true, with_css_classes:true, date_separator: ' / '}%>
+        </div>
+        <div>
+          <%= f.label :join_date_gt, '入社年月日' %>
+          <%= f.date_select :join_date_gt, {include_blank: true, start_year: 2019, use_month_numbers: true, with_css_classes:true, date_separator: ' / '}%>〜
+          <%= f.date_select :join_date_lt, {include_blank: true, start_year: 2019, use_month_numbers: true, with_css_classes:true, date_separator: ' / '}%>
+        </div>
+
+        <div class="form-area__employee_type text-left">
+
+          <p class="form-label"><label for="employee_type">雇用形態</label></p>
+
+          <div class="form-area__radio form-area__employee-list">
+            <label class="form-area__employee-item form-area__employee-proper" for="employee_mst_employee_type_id_1">
+              <span><%= f.radio_button :mst_employee_type_id_eq, MstEmployeeType.find(1).id %></span>正社員
+            </label>
+
+            <label class="form-area__employee-item form-area__employee_type-contract" for="employee_mst_employee_type_id_2">
+              <span><%= f.radio_button :mst_employee_type_id_eq, MstEmployeeType.find(2).id %></span>契約社員
+            </label>
+
+            <label class="form-area__employee-item form-area__employee_type-part-time" for="employee_mst_employee_type_id_3">
+              <span><%= f.radio_button :mst_employee_type_id_eq, MstEmployeeType.find(3).id %></span>アルバイト
+            </label>
+
+            <label class="form-area__employee-item form-area__employee_type-part-freelance" for="employee_mst_employee_type_id_4">
+              <span><%= f.radio_button :mst_employee_type_id_eq, MstEmployeeType.find(4).id %></span>フリーランス
+            </label>
+          </div>
+        </div><!-- employee_type -->
+        <div class="serach-skill">
+          <%= f.label :employee_siklls_mst_skill_id_1_eq, 'スキル' %>
+          <% skill_category_options = MstSkillCategory.order(:id).map{|msc| [msc.category, msc.id, data:{mst_skill_path: mst_skill_category_mst_skills_path(msc)}]} %>
+          <%= f.select :id ,skill_category_options ,{include_blank: true}, class: 'form-select category-select' %>
+
+          <%= f.collection_select :employee_siklls_mst_skill_id, [], :id, :skill, {:include_blank => true}, class: 'form-select category-select-children' ,name: 'q[employee_siklls_mst_skill_id][0]'%>
+
+          <%= f.label :employee_siklls_mst_skill_id_1_eq, 'スキル' %>
+          <% skill_category_options = MstSkillCategory.order(:id).map{|msc| [msc.category, msc.id, data:{mst_skill_path: mst_skill_category_mst_skills_path(msc)}]} %>
+          <%= f.select :id ,skill_category_options ,{include_blank: true}, class: 'form-select category-select' %>
+
+          <%= f.collection_select :employee_siklls_mst_skill_id, [], :id, :skill, {:include_blank => true}, class: 'form-select category-select-children' ,name: 'q[employee_siklls_mst_skill_id][0]'%>
+        </div>
+        <div class="actions"><%= f.submit "検索" %></div>
+      <% end %>
+    </div>
+  </div>
+
+    <div class="employee-list-table">
+      <table class="table employee-list-table__inner">
+        <thead class="table__thead employee-list-table__header-head">
+          <tr class="table__row-thead employee-list-table__header-row">
+            <!--<%= sort_link(@q, :employee_id) %>-->
+            <th class="table__head"><%= sort_link(@q, :employee_id) %></th>
+            <th class="table__head"><%= sort_link(@q, :name, %i(last_name first_name), default_order: {last_name: 'asc', first_name: 'desc'}) %></th>
+            <th class="table__head"><%= sort_link(@q, :mst_gender_id) %></th>
+            <th class="table__head"><%= sort_link(@q, :birth_date) %></th>
+            <th class="table__head"><%= sort_link(@q, :join_date) %></th>
+            <th class="table__head"><%= sort_link(@q, :experience) %></th>
+            <th class="table__head"></th>
+            <!--q<th class="table__head"></th>-->
+          </tr>
+        </thead>
+        <tbody>
+          <% @employees.each_with_index do |employee, index| %>
+            <tr class="table__row">
+              <td class="table__text"><%= employee.employee_id %></td>
+              <td class="table__text"><%= @names[index] %> </td>
+              <td class="table__text"><%= employee.mst_gender.gender %></td>
+              <td class="table__text"><%= @birth_dates[index] %></td>
+              <td class="table__text"><%= employee.join_date.strftime("%Y#{DATE::YEAR}%m#{DATE::MONTH}%d#{DATE::DAY}") %></td>
+              <td class="table__text"><%= employee.experience %></td>
+              <td class="table__text"><%= link_to '編集', edit_employee_path(employee.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pagination-area">
+      <%= paginate @employees , outer_window: 3 %>
+    </div><!-- pagination -->
+
+  </div>
+</div>
+
+<script>
+  // 検索欄 開閉ボタン
+  $(function(){
+    $('.serach-content').hide();
+
+    $('#js-serach-menu').on('click', function(){
+      $(this).next().slideToggle();
+    });
+  });
+
+  function replaceChildrenOptions(){
+    // 選択された親カテゴリーのdata属性から、小カテゴリーのパスを取得する。
+    const children = $(this).find('option:selected').val()
+    // 変更されたセレクトボックスの値を取得する
+    const select_index = $('.category-select').index(this);
+    // 小カテゴリのセレクトボックスを取得する
+    $selectChidren = $(this).closest('.serach-skill').find('.category-select-children');
+
+
+    if (children !== null && children !== ""){
+      $.ajax({
+        url: `/mst_skill_categories/${children}/mst_skills`,
+        type: 'get',
+        cache: false,
+        dataType:'json',
+        })
+        .done(function(result){
+          //通信に成功した場合の処理
+          $('.category-select').each(function(i){
+            // if開始
+            if(i === select_index){
+              $(`.category-select-children:eq(${i}) > option`).remove();
+
+              $(result).each(function(index,element){
+                $selectChidren.eq(i).append($('<option>').html(element['skill']).val(element['id']));
+              })
+            }
+            // if終了
+          });
+        })
+        .fail(function(){
+          //通信に失敗した場合の処理
+        })
+      }
+    else{
+      $(`.category-select-children:eq(${select_index}) > option`).remove();
+    }
+  }
+
+  $('.category-select').on('change',replaceChildrenOptions);
+</script>
+
+

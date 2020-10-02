@@ -1,5 +1,9 @@
 class EmployeesController < ApplicationController
+  before_action :require_sign_in!
+  before_action :check_admin, only: %w(edit update destroy)
+  before_action :current_user, only: %w(edit update)
   before_action :set_employee, only:[:edit, :update, :show, :destroy]
+
   def index
     # ソート時に再度文字列の分割を防ぐため、チェック
     if !params[:q].nil? && params[:q]["first_name_or_last_name_cont_any"].class == String
@@ -32,24 +36,12 @@ class EmployeesController < ApplicationController
     end
   end
 
-  def new
-    @employee = Employee.new
-    @employee.licenses.build
-    @employee.build_introduction
-    @employee.employee_siklls.build
-  end
-
-  def create
-    params[:employee][:birth_date] = join_date
-    @employee = Employee.new(employees_params)
-    if @employee.save 
-      redirect_to controller: 'employees', action: 'index'
-    else
-      render action: 'new'
-    end
-  end
-
   def edit
+    # ログインユーザーと編集対象のユーザーが一致しているか
+    unless @employee.id == @current_employee.id
+      redirect_to employees_path
+    end
+
     # 保有が登録されていない場合インスタンスを作成
     if @employee.licenses.empty?
       @employee.licenses.build
@@ -106,5 +98,9 @@ class EmployeesController < ApplicationController
     end
 
     return Date.new birth_date["birth_date(1i)"].to_i, birth_date["birth_date(2i)"].to_i, birth_date["birth_date(3i)"].to_i
+  end
+
+  def check_admin
+    redirect_to employees_path unless @current_employee.admin?
   end
 end

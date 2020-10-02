@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
 
-  before_action :current_user
+  before_action :current_employee
+  before_action :require_sign_in!
 
 
-  def current_user
+  def current_employee
     remember_token =  Employee.encrypt(cookies[:employee_remember_token])
-    @current_wmployee ||= Employee.find_by(remember_token: remember_token)
+    @current_employee ||= Employee.find_by(remember_token: remember_token)
   end
 
   def sign_in(employee)
@@ -16,14 +17,14 @@ class ApplicationController < ActionController::Base
   end
 
   def sign_out
-    cookies.delete(:employee_remember_tokend)
+    cookies.delete(:employee_remember_token)
   end
 
   def signed_in?
     @current_employee.present?
   end
 
-  # private
+  private
   def require_sign_in!
     redirect_to login_path unless signed_in?
   end
