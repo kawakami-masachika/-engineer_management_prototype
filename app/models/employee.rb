@@ -1,7 +1,7 @@
 class Employee < ApplicationRecord
   # コールバック
   before_validation :set_employee_id, :trim
-  # before_validation :check_empty_skills
+  before_validation :check_empty_skills
   before_save :check_empty_skills
 
   # 論理削除
@@ -188,7 +188,6 @@ class Employee < ApplicationRecord
       end
     end
 
-    binding.pry
     if skills.length > 0
       if skills.length != skills.uniq.length 
         errors.add(:skills, "が重複しています")

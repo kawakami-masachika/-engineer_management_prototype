@@ -19,7 +19,7 @@
 
     <div class="form-area form-area__new">
       <h3 class="section-title section-title-edit">社員情報</h3>
-      <%= form_with model: @employee, local: true do |f| %>
+      <%= form_with model: @employee,url: employee_admin_employees_path, local: true do |f| %>
         <div class="form-area__name">
           <div class="form-area__name-last-name">
             <p class="form-label"><%= f.label :last_name %></p>
@@ -207,7 +207,7 @@
         <div><!-- employee password STA -->
           <div class="form-area__station-line">
           <p class="form-label"><%= f.label :password %></p>
-            <%= f.password_field :password_confirmation, class:'form-text' %>
+            <%= f.password_field :password, class:'form-text' %>
           </div>
         </div><!-- employee password END -->
 
