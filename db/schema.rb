@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_015009) do
+ActiveRecord::Schema.define(version: 2020_11_07_042043) do
 
   create_table "adopt_technologies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "project_id", null: false
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 2020_08_17_015009) do
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "project_name", limit: 50, null: false
     t.bigint "mst_industry_id"
-    t.integer "members", limit: 1, null: false
+    t.string "members", limit: 4, null: false
     t.text "summary", null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_projects_on_deleted_at"
