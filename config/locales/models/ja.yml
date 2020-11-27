@@ -2,6 +2,11 @@ ja:
   activerecord:
     models:
       employee: 社員
+      project: プロジェクト
+      project_members: プロジェクトメンバー
+      project_phase: プロジェクト参画工程
+      mst_industry: 業界マスタ
+      mst_position: ポジションマスタ
     attributes:
       employee:
         employee_id: 社員番号
@@ -22,6 +27,37 @@ ja:
         introduction: 自己PR
       license:
         license: 保有資格
+      project:
+        project_name: プロジェクト名
+        members: 規模・チーム
+        mst_industry_id: 業界
+        mst_industry: 業界
+        summary: プロジェクト概要
+        join_date: 参画開始日
+        leave_date: 参画終了日
+      project/project_members:
+        mst_position_id: チーム内ポジション
+        # mst_position: チーム内ポジション
+        end_flg: 参画状況
+      project_phase:
+        mst_phase_id: 工程
+      mst_industry:
+        id: 業界
+      mst_position:
+        id: チーム内ポジション
+        position: ポジション
+  activemodel:
+    attributes:
+      project_registration_form:
+        project_name: プロジェクト名
+        mst_industry_id: 業界
+        members: 規模・メンバー
+        summary: プロジェクト概要
+        mst_phase_ids: 工程
+        join_date: 参画開始日
+        leave_date: 参画終了日
+        mst_position_id: 役割
+        end_flg: 参画状態
   enums:
     employee_sikll:
       sikll_period:
@@ -30,3 +66,7 @@ ja:
         less_five_year: "3〜5年"
         over_five_year: "5年以上"
         over_ten_year: "10年以上"
+    project_member:
+      end_flg:
+        joining: "参画中"
+        leaved: "参画終了"

@@ -1,3 +1,121 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// @import 'common.scss';
+@import 'application.scss';
+
+$form-new-color: #5f5f5f;
+
+input[type="text"]{
+  &.input-name{
+    width: 100%;
+  }
+  &.form-input__tool,&.form-input__member{
+      margin-right: 20px;
+      margin-bottom: 0;
+  }
+  & span{
+    margin-left: 5px;
+  }
+}
+.form-area__select-inner{
+  margin-bottom: 20px;
+  text-align: left;
+}
+.form{
+  &-area{
+    &__participation, &__select, &__process{
+
+      &-inner{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      &-inner__license{
+        margin-bottom: 20px;
+      }
+
+      &-inner span{
+        margin-left: 5px;
+        margin-right: 20px;
+      }
+    }
+    &__participation{
+      margin-top: 20px;
+    }
+    &__industry{
+      &-inner{
+        display: flex;
+      }
+    }
+
+    &__new{
+      margin-top: 40px;
+      width: 80%;
+    }
+
+    &__pj-name{
+      width: 49%;
+    }
+  }
+}
+textarea{
+  border-color: #dcdcdc;
+  width: 100%;
+}
+.form-area__process{
+  margin-top: 20px;
+}
+
+.form-area__checkbox2{
+  padding: 0px 16px 0px 0px;
+}
+.form-area__checkbox3{
+  padding: 0px 16px 0px 0px;
+}
+.form-area__checkbox4{
+  padding: 0px 16px 0px 0px;
+}
+.form-area__checkbox5{
+  padding: 0px 48px 0px 0px;
+}
+.form-area__checkbox6{
+  padding: 0px 0px 0px 0px;
+}
+.form-area__checkbox7{
+  margin-top: 10px;
+}
+.form-area__checkbox8{
+  padding: 0px 0px 0px 0px;
+}
+.form-area__checkbox9{
+  padding: 0px 0px 0px 0px;
+}
+.form-area__checkbox10{
+  padding: 0px 0px 0px 0px;
+}
+.form-area__checkbox11{
+  padding: 0px 0px 0px 0px;
+}
+.form-area__checkbox12{
+  padding: 0px 0px 0px 0px;
+}
+.form-area__checkbox13{
+  margin-top: 10px;
+}
+.form-area__checkbox14{
+  padding: 0px 0px 0px 0px;
+}
+.form-area__checkbox15{
+  padding: 0px 48px 0px 0px;
+}
+.form-area__checkbox16{
+  padding: 0px 0px 0px 0px;
+}
+
+/* ----------------------------------------------------------------
+	プロジェクトモデル用
+-----------------------------------------------------------------*/
+.pro-form-select--l{
+  width: 220px;
+}

@@ -45,6 +45,7 @@ class Admin::EmployeesController < ApplicationController
   def create
     params[:employee][:birth_date] = join_date
     @employee = Employee.new(employees_params)
+    binding.pry
 
     defalt_experience
 
@@ -86,11 +87,11 @@ class Admin::EmployeesController < ApplicationController
 
   def join_date
     birth_date = params[:employee]
-    
-    unless birth_date["birth_date(1i)"].empty? && birth_date["birth_date(2i)"].empty? && birth_date["birth_date(3i)"].empty?
-    end
 
-    return Date.new birth_date["birth_date(1i)"].to_i, birth_date["birth_date(2i)"].to_i, birth_date["birth_date(3i)"].to_i
+    unless birth_date["birth_date(1i)"].blank? && birth_date["birth_date(2i)"].blank? && birth_date["birth_date(3i)"].blank? 
+    end
+    # return Date.new birth_date["birth_date(1i)"].to_i, birth_date["birth_date(2i)"].to_i, birth_date["birth_date(3i)"].to_i
+
   end
 
   def check_admin
