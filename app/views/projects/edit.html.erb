@@ -1,0 +1,148 @@
+<%= content_for :body do %>
+  <%= stylesheet_link_tag 'common_form' %>
+  <%= stylesheet_link_tag 'projects' %>
+<% end %>
+
+<!-- エラーメッセージ STA -->
+<% if @project.errors.any? %> 
+    <div class = "alert alert-warning">
+        <ul>
+            <% @project.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+<!-- エラーメッセージ END -->
+
+<div class="main">
+  <div class="main__inner">
+    <h2 class="title page-title">プロジェクト新規登録</h2>
+    <div class="form-area form-area__new">
+
+      <h3 class="section-title section-title-edit">プロジェクト情報</h3>
+      <%= form_with model: @project, url: employee_project_path , method: :patch, local: true do |f| %>
+        
+        <%= f.hidden_field :project_id , :value=> @project.project_id %>
+        <%= f.hidden_field :project_members_id , :value=> @project.project_members_id %>
+        <%= f.hidden_field :mst_position_ids , :value=> @project.mst_phase_ids %>
+        <%= f.hidden_field :adopt_tech_ids , :value=> @project.adopt_tech_ids %>
+
+        <div class="form-area__pj-name">
+          <p class="form-label"><label for="pj-name">プロジェクト名</label></p>
+          <%= f.text_field :project_name, class: 'input-name', placeholder: "社内プロジェクト" %>
+        </div>
+        <!-- / プロジェクト名 -->
+
+        <div class="form-area__industry">
+          <p class="form-label"><label for="">業界</label></p>
+          <div class="form-area__industry-inner">
+          <div class=""><%= f.collection_select :mst_industry_id, MstIndustry.all, :id, :industry, {:include_blank => true}, class: 'form-select pro-form-select--l form-select-industry' %></div>
+          </div>
+        </div>
+        <!-- / 業界 -->
+
+        <div class="form-area__member">
+          <p class="form-label"><label for="license">規模・メンバー</label></p>
+          <div class="form-area__select-inner">
+            <%= f.text_field :members, class: 'form-input__member form-input-text--yl' %>
+            <span>人</span>
+          </div>
+        </div>
+        <!-- / 規模・メンバー -->
+
+        <div class="form-area__description">
+          <p class="form-label"><label for="">プロジェクト概要</label></p>
+          <div class="form-area__description-inner">
+            <div class="form-area__pr-overview">
+              <%= f.text_area :summary, size: "80x12" %>
+            </div>
+          </div>
+        </div>
+        <!-- / プロジェクト概要 -->
+
+        <!--<%= f.fields_for :project_phases do |pp| %>-->
+          <div class="form-area__process  text-left">
+          
+            <p class="form-label"><label for="">工程</label></p>
+            <div class="form-area__process-inner">
+              <div class="form-area__checkbox1 form-area-process" name="process" id="">
+                  <%= f.collection_check_boxes :mst_phase_ids, MstPhase.all, :id, :phase, checked: @project.mst_phase_ids ,include_hidden: false do |b| %>
+                  <div >
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+                  <% end %>
+              </div>
+            </div>
+          </div>
+          <!-- / 工程 -->
+
+          <div class="form-area__participation">
+            <p class="form-label"><label for="">参画期間</label></p>
+            <div class="form-area__participation-inner">
+              <%== sprintf(f.date_select(:join_date, with_css_classes:true , use_month_numbers: true, include_blank: true, selected: @project.join_date, start_year: 2015, end_year: Time.now.year, date_separator: '%s'),'<span>年</span>','<span>月</span>')+'<span>日</span>' %>
+              <span>～</span>
+              <%== sprintf(f.date_select(:leave_date, with_css_classes:true , use_month_numbers: true, include_blank: true, start_year: 2015, end_year: Time.now.year, date_separator: '%s'),'<span>年</span>','<span>月</span>')+'<span>日</span>' %>
+            </div>
+          </div>
+          <!-- / 参画期間 -->
+
+          <div class="form-area__position text-left">
+            <p class="form-label"><label for="positon">役割</label></p>
+            <div class="form-area__position-inner">
+              <%= f.collection_select :mst_position_id, MstPosition.all, :id, :position, {:include_blank => true}, class: 'form-select pro-form-select--l form-select-position', id: 'positon'%>
+            </div>
+          </div>
+          <!-- / ポジション -->
+
+          <div class="form-area__status">
+            <p class="form-label"><label for="">参画状態</label></p>
+            <div class="form-area__select-inner">
+              <%= f.select :end_flg, ProjectMember.end_flgs.keys.map{|k| [I18n.t("enums.project_member.end_flg.#{k}"), k]}, {include_blank: true }, {class: 'form-select pro-form-select--l form-select-pj-complete'} %>
+            </div>
+          </div>
+          <!-- / 参画状況 -->
+
+          <!-- / 社員ID -->
+
+        <!--<% end %>-->
+        <!-- / project_members -->
+
+
+        <!-- プロジェクト採用技術 -->
+          <div class="text-left">
+            <p class="form-label"><label>使用技術</label></p>
+
+            <p class="form-label"><label>OS</label></p>
+            <%= f.collection_check_boxes :mst_skill_ids, MstSkill.where(mst_skill_category_id: "1"), :id, :skill, checked: @project.mst_skill_ids ,include_hidden: false do |b| %>
+              <%= b.check_box %>
+              <%= b.text %>
+            <% end %>
+
+            <p class="form-label"><label>言語</label></p>
+            <%= f.collection_check_boxes :mst_skill_ids, MstSkill.where(mst_skill_category_id: "2"), :id, :skill, checked: @project.mst_skill_ids ,include_hidden: false do |b| %>
+              <%= b.check_box %>
+              <%= b.text %>
+            <% end %>
+
+            <p class="form-label"><label>データベース</label></p>
+            <%= f.collection_check_boxes :mst_skill_ids, MstSkill.where(mst_skill_category_id: "3"), :id, :skill, checked: @project.mst_skill_ids ,include_hidden: false do |b| %>
+              <%= b.check_box %>
+              <%= b.text %>
+            <% end %>
+
+            <p class="form-label"><label>フレームワーク</label></p>
+            <%= f.collection_check_boxes :mst_skill_ids, MstSkill.where(mst_skill_category_id: "4"), :id, :skill, checked: @project.mst_skill_ids ,include_hidden: false do |b| %>
+              <%= b.check_box %>
+              <%= b.text %>
+            <% end %>
+          </div>
+        <div class="btn-wrapper">
+          <input class="btn btn-wide btn-submit" type="submit" value="更新" onclick="js_confirm_register()">
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
