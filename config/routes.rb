@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'sessions#new'
+    root to: 'sessions#new'
   # ログイン/ログアウト
   get    'login',  to: 'sessions#new'
   post   'login',  to: 'sessions#create'
@@ -19,5 +19,4 @@ Rails.application.routes.draw do
   resources :mst_skill_categories, only: [] do
     resources :mst_skills, only: %w(index)
   end
-
 end
