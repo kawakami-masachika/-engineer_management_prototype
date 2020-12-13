@@ -58,15 +58,3 @@ ja:
         leave_date: 参画終了日
         mst_position_id: 役割
         end_flg: 参画状態
-  enums:
-    employee_sikll:
-      sikll_period:
-        less_one_year: "1年未満"
-        less_three_year: "1〜3年"
-        less_five_year: "3〜5年"
-        over_five_year: "5年以上"
-        over_ten_year: "10年以上"
-    project_member:
-      end_flg:
-        joining: "参画中"
-        leaved: "参画終了"
