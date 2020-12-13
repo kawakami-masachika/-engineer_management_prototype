@@ -1,5 +1,5 @@
 class AdoptTechnology < ApplicationRecord
-  # 関連づけ
+  # 関連付け
   belongs_to :project
   belongs_to :mst_skill
 
