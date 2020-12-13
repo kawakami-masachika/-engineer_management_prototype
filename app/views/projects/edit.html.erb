@@ -23,10 +23,10 @@
       <h3 class="section-title section-title-edit">プロジェクト情報</h3>
       <%= form_with model: @project, url: employee_project_path , method: :patch, local: true do |f| %>
         
-        <%= f.hidden_field :project_id , :value=> @project.project_id %>
-        <%= f.hidden_field :project_members_id , :value=> @project.project_members_id %>
-        <%= f.hidden_field :mst_position_ids , :value=> @project.mst_phase_ids %>
-        <%= f.hidden_field :adopt_tech_ids , :value=> @project.adopt_tech_ids %>
+        <%= f.hidden_field :project_id , :value => @project.project_id %>
+        <%= f.hidden_field :project_members_id , :value => @project.project_members_id %>
+        <%= f.hidden_field :mst_position_ids, :multiple => true, :value => @project.mst_phase_ids %>
+        <%= f.hidden_field :adopt_tech_ids, :multiple => true, :value => @project.adopt_tech_ids %>
 
         <div class="form-area__pj-name">
           <p class="form-label"><label for="pj-name">プロジェクト名</label></p>
@@ -99,14 +99,12 @@
           <div class="form-area__status">
             <p class="form-label"><label for="">参画状態</label></p>
             <div class="form-area__select-inner">
-              <%= f.select :end_flg, ProjectMember.end_flgs.keys.map{|k| [I18n.t("enums.project_member.end_flg.#{k}"), k]}, {include_blank: true }, {class: 'form-select pro-form-select--l form-select-pj-complete'} %>
+              <%= f.select :end_flg, ProjectMember.end_flgs_i18n.invert, {include_blank: true }, {class: 'form-select pro-form-select--l form-select-pj-complete'} %>
             </div>
           </div>
           <!-- / 参画状況 -->
 
           <!-- / 社員ID -->
-
-        <!--<% end %>-->
         <!-- / project_members -->
 
 
