@@ -6,7 +6,8 @@
   <div class="header__inner">
     <div class="header__inner-link">
       <a class="mgr-20" href="st_02_index.html">社員一覧</a>
-      <a class="mgr-20" href="st_08_">プロジェクト一覧</a>
+      <a class="mgr-20" href="/employees/13/admin/employees/new">社員登録</a>
+      <%= link_to "社員登録", new_employee_admin_employee_sikll_path(13) %>
     </div>
     <div class="btn-area btn-area__introduce">
       <%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-wide btn-delete' %>

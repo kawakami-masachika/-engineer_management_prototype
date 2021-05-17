@@ -114,10 +114,6 @@
             <p class="form-label"><label>使用技術</label></p>
 
             <p class="form-label"><label>OS</label></p>
-            <%= f.collection_check_boxes :mst_skill_ids, MstSkill.where(mst_skill_category_id: "1"), :id, :skill, checked: @project.mst_skill_ids ,include_hidden: false do |b| %>
-              <%= b.check_box %>
-              <%= b.text %>
-            <% end %>
 
             <p class="form-label"><label>言語</label></p>
             <%= f.collection_check_boxes :mst_skill_ids, MstSkill.where(mst_skill_category_id: "2"), :id, :skill, checked: @project.mst_skill_ids ,include_hidden: false do |b| %>
