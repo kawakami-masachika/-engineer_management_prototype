@@ -45,7 +45,6 @@ class Admin::EmployeesController < ApplicationController
   def create
     params[:employee][:birth_date] = join_date
     @employee = Employee.new(employees_params)
-    binding.pry
 
     defalt_experience
 
